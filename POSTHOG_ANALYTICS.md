@@ -6,8 +6,8 @@
 | 事件 | 触发 | 属性 |
 |------|------|------|
 | `page_view` | 页面加载 | `page=index`，`ref`（来路域名，直达记 `direct`） |
-| `tab_switch` | 切换 tab | `to` ∈ {pp, bd, pb, tn, how, map} |
-| `png_download` | 下载长图（底部按钮或悬浮按钮） | `file` ∈ {pingpong, badminton, pickleball, tennis} |
+| `tab_switch` | 切换 tab | `to` ∈ {pp, bd, pb, tn, four, how, map} |
+| `png_download` | 下载长图（底部按钮或悬浮按钮） | `file` ∈ {pingpong, badminton, pickleball, tennis, four} |
 | `share_copy` | 复制图分享文案 | `tab` ∈ {pp, bd, pb, tn} |
 | `tech_detail` | 点击技术展开要领/易错 | `sport`，`name` |
 | `map_sport` | 自测切换运动 | `to` ∈ {pp, bd, pb, tn} |

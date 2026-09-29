@@ -245,6 +245,23 @@
                     font-weight:900;}
   .tbody .e li{color:#6d5a48;}
 
+  /* ---------- 四拍同框 ---------- */
+  .legend{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;}
+  .legend span{font-size:12px;color:var(--ink);background:#fbf8f1;
+               border:1px solid var(--hair);border-radius:999px;padding:4px 12px;}
+  .legend b{font-weight:750;}
+  .cell .srow{display:flex;gap:12px;align-items:baseline;padding:9px 2px;}
+  .cell .srow + .srow{border-top:1px dashed var(--hair);}
+  .cell .sp{font-family:var(--serif);font-weight:900;font-size:16px;
+      color:var(--muted);width:24px;flex-shrink:0;text-align:center;}
+  .cell .sp i{display:block;font-family:var(--sans);font-style:normal;
+        font-size:9px;font-weight:600;letter-spacing:.05em;margin-top:2px;}
+  .cell .sp.spin i{color:var(--x1);}
+  .cell .sp.arc i{color:var(--x2);}
+  .cell .tn{font-size:13.8px;font-weight:600;letter-spacing:.02em;line-height:1.7;}
+  .cell .tn b{font-weight:800;}
+  .rhead.neutral .dir{color:#5a6b58;}
+
   /* ---------- 手机端 ---------- */
   @media (max-width:760px){
     body{padding:0;}
@@ -310,6 +327,7 @@
       <button class="tab" data-t="bd">羽毛球</button>
       <button class="tab" data-t="pb">匹克球</button>
       <button class="tab" data-t="tn">网球</button>
+      <button class="tab" data-t="four">同框</button>
       <button class="tab" data-t="how">怎么选</button>
       <button class="tab" data-t="map">自测</button>
     </div>
@@ -563,6 +581,93 @@
 </div>
 </div>
 
+<!-- ============ 四拍同框 ============ -->
+<div class="wrap" id="four" hidden>
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">FOUR RACKETS · 全家福</div>
+    <h2>四拍同框 <em>同源对照</em></h2>
+    <p class="sub">九格之中，四家并坐：<b>上行球往上、中行平走、下行下压</b>，横轴力度四家同义——六十三技一图收尽，各归其位，彼此照面。各技要领、难度与握拍注记，见分图。</p>
+    <div class="legend">
+      <span><b>乒</b> · 旋类 23 技</span><span><b>羽</b> · 弧类 14 技</span>
+      <span><b>匹</b> · 弧类 12 技</span><span><b>网</b> · 旋类 14 技</span>
+      <span>旋类以<b>摩擦造旋</b>定行 ｜ 弧类以<b>出球弧线</b>定行</span>
+    </div>
+  </div>
+  <div class="matrix">
+    <div class="corner"><small><b>发力强度 →</b><br>球行方向 ↓</small></div>
+    <div class="chead c1"><span class="no">X1</span><span class="nm">借力</span><span class="ds">减力 · 吸收来势</span></div>
+    <div class="chead c2"><span class="no">X2</span><span class="nm">控制</span><span class="ds">借力 + 微调</span></div>
+    <div class="chead c3"><span class="no">X3</span><span class="nm">爆发</span><span class="ds">主动加力 · 收分</span></div>
+    <div class="rhead neutral"><div class="dir">↑</div><div class="nm">上行 · 球往上</div><div class="ds">旋类造上旋<br>弧类挑高弧</div></div>
+    <div class="cell k1">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">贴（快带）· 撕 · 放高球</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">挡网</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">软挡 · 重置</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">月亮球</span></div>
+    </div>
+    <div class="cell k2">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">提 · 拧（拧拉）</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">挑球</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">软战 dink · 第三拍放</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">上旋过渡</span></div>
+    </div>
+    <div class="cell k3">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn"><b>拉 · 弧圈球</b></span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn"><b>高远球</b></span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">挑高球</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">上旋强抽 · 挑高球</span></div>
+    </div>
+    <div class="rhead neutral"><div class="dir">→</div><div class="nm">中行 · 平走</div><div class="ds">平击对轰<br>直线快行</div></div>
+    <div class="cell k1">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">碰 · 挡 · 抹 · 挤</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">平挡</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">半截击</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">挡截 · 反弹球</span></div>
+    </div>
+    <div class="cell k2">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">挑（挑打）· 拨 · 滑板</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">平抽 · 平推</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">快顶截击</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">接发 · 平击相持</span></div>
+    </div>
+    <div class="cell k3">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">击（快攻）· 弹 · 扣杀</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">反抽</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">平射 · 加速 · 绕柱 ATP</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">平击强抽 · 抽击截击</span></div>
+    </div>
+    <div class="rhead neutral"><div class="dir">↓</div><div class="nm">下行 · 球往下</div><div class="ds">旋类造下旋<br>弧类下压坠网</div></div>
+    <div class="cell k1">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">摆（摆短）· 磕</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">轻吊 · 放网</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">轻截放</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">放小球 · 短挡截击</span></div>
+    </div>
+    <div class="cell k2">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn">搓 · 切 · 撇</span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn">劈吊 · 搓球 · 勾对角</span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn">卷拉截击</span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn">切球</span></div>
+    </div>
+    <div class="cell k3">
+      <div class="srow"><span class="sp spin">乒<i>旋</i></span><span class="tn"><b>劈 · 削</b></span></div>
+      <div class="srow"><span class="sp arc">羽<i>弧</i></span><span class="tn"><b>杀球 · 扑球</b></span></div>
+      <div class="srow"><span class="sp arc">匹<i>弧</i></span><span class="tn"><b>头顶扣杀</b></span></div>
+      <div class="srow"><span class="sp spin">网<i>旋</i></span><span class="tn"><b>高压球</b></span></div>
+    </div>
+  </div>
+  <div class="pfoot">
+    <p class="insight">同格即同源：右下角坐着的 <span class="seal">劈 · 杀 · 扣杀 · 高压</span>，是同一件事的四国方言——方向与力度不变，器材换而理不变。旋类以摩擦造旋定行，弧类以弧线定行：<b>行同，果同，机不同</b>。</p>
+    <div class="meta-r">四拍同框 · 全家福<br>三板斧 · 2026</div>
+  </div>
+</div>
+<div class="actions">
+  <a class="act" href="png/four.png" download data-dl="four">⬇ 下载长图</a>
+  <button class="act" data-share="four">⧉ 复制分享文案</button>
+</div>
+</div>
+
 <!-- ============ 怎么选 ============ -->
 <div class="wrap" id="how" hidden>
 <div class="poster">
@@ -679,12 +784,13 @@ const SHARE = {
   pp: '三板斧｜一张图打尽乒乓球 23 个技术：方向 × 力度 × 难度，每技归位 https://liyuankui.github.io/sanbanfu/',
   bd: '三板斧｜一张图打尽羽毛球 14 个技术：弧线 × 力度 × 难度，杀吊高远同出一门 https://liyuankui.github.io/sanbanfu/',
   pb: '三板斧｜一张图打尽匹克球 12 个技术：弧线 × 力度 × 难度，球低重置球高终结 https://liyuankui.github.io/sanbanfu/',
-  tn: '三板斧｜一张图打尽网球 14 个技术：旋转 × 力度 × 难度，轴同乒乓 https://liyuankui.github.io/sanbanfu/'
+  tn: '三板斧｜一张图打尽网球 14 个技术：旋转 × 力度 × 难度，轴同乒乓 https://liyuankui.github.io/sanbanfu/',
+  four: '三板斧全家福｜四拍同框：乒乓×羽毛球×匹克球×网球 63 技一图收尽，劈·杀·扣杀·高压是同一件事的四国方言 https://liyuankui.github.io/sanbanfu/#four'
 };
 // ── tabs + hash 直链 ──────────────────────────────────
-const IDS = ['pp','bd','pb','tn','how','map'];
-const PNG = {pp:'pingpong', bd:'badminton', pb:'pickleball', tn:'tennis'};
-const SPORT_NAMES = {pp:'乒乓', bd:'羽毛球', pb:'匹克球', tn:'网球'};
+const IDS = ['pp','bd','pb','tn','four','how','map'];
+const PNG = {pp:'pingpong', bd:'badminton', pb:'pickleball', tn:'tennis', four:'four'};
+const SPORT_NAMES = {pp:'乒乓', bd:'羽毛球', pb:'匹克球', tn:'网球'}; // four 非自测项
 function show(id){
   document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x.dataset.t === id));
   IDS.forEach(i => document.getElementById(i).hidden = (i !== id));
@@ -702,7 +808,7 @@ window.addEventListener('hashchange', () => {
   const h = location.hash.slice(1); if (IDS.includes(h)) show(h);
 });
 document.getElementById('stickyDl').addEventListener('click', () => {
-  const cur = ['pp','bd','pb','tn'].find(i => !document.getElementById(i).hidden);
+  const cur = Object.keys(PNG).find(i => !document.getElementById(i).hidden);
   track('png_download', { file: PNG[cur] || 'pingpong' });
 });
 document.querySelectorAll('[data-dl]').forEach(a => a.addEventListener('click', () => track('png_download', { file: a.dataset.dl })));
@@ -877,18 +983,18 @@ pp:{
 },
 bd:{
 '挡网（Block）':{k:['接杀时拍面随球缓冲卸力','放短落网前两角'],e:'拍面硬顶，回球又高又短挨扑'},
-'挑球（Lift）':{k:['下手位前臂带动手腕由下向上挑','弧高落深，换取回位时间'],e:'弧不高落不深，等于送杀'},
+'挑球（Lift）':{k:['下手位前臂带动手腕由下向上挑','弧高落深，换取回位时间'],e:'弧不高落不深，等于送杀',g:'正反手皆用；反手挑须提前转反握'},
 '高远球（Clear）':{k:['侧身蹬转，大臂带前臂鞭打','击球点在头前上方最高点'],e:'击球点偏低偏后，高而不远'},
 '平挡（Dead Block）':{k:['借力平顶，拍面随来球调整','快而平过网，节奏突变'],e:'加力硬挡，直接出界'},
-'平抽（Drive）':{k:['握拍放松，前臂快挥','抽球于体侧前方，平而快'],e:'等球到身后才抽，被动挨打'},
-'平推（Push）':{k:['网口高点，前臂手指发力平推','压向对手两底角'],e:'推得过高挨扑，过平扎网'},
-'反抽（Counter）':{k:['接杀瞬间借力反抽','拍面控平弧打回头'],e:'引拍过大，错过反抽时机'},
+'平抽（Drive）':{k:['握拍放松，前臂快挥','抽球于体侧前方，平而快'],e:'等球到身后才抽，被动挨打',g:'反手握拍为主，拇指顶宽面发力'},
+'平推（Push）':{k:['网口高点，前臂手指发力平推','压向对手两底角'],e:'推得过高挨扑，过平扎网',g:'反手握拍，指腕短促发力'},
+'反抽（Counter）':{k:['接杀瞬间借力反抽','拍面控平弧打回头'],e:'引拍过大，错过反抽时机',g:'接杀预备位即持反握，出手零转换'},
 '轻吊（Soft Drop）':{k:['上手位减力切放，动作与杀球同形','球贴网坠落，落点求短'],e:'吊得过高过长，对手上网即扑'},
 '放网（Net Shot）':{k:['网前手指控拍轻放','球滚网而过，贴网而落'],e:'动作大发力猛，球弹高送扑'},
 '劈吊（Slice Drop）':{k:['拍面斜切球托侧部','弧线飘而坠，带欺骗性'],e:'切得过薄下网，过厚成轻吊'},
 '搓球（Spin Net）':{k:['拍面搓切球托底部使其翻滚','贴网急坠，对手难受'],e:'搓球托侧面，不翻滚反出界'},
 '勾对角（Cross Net）':{k:['拍面斜抹变线，手腕手指控角','对角贴网，攻其不备'],e:'手臂横扫，勾出边线'},
-'杀球（Smash）':{k:['侧身倒拍，腰腹鞭打下压','击球点前上方最高，压腕收拍'],e:'击球点偏后，杀球无力且易伤肩'},
+'杀球（Smash）':{k:['侧身倒拍，腰腹鞭打下压','击球点前上方最高，压腕收拍'],e:'击球点偏后，杀球无力且易伤肩',g:'正手握拍，掌心留空，触球瞬间才握紧'},
 '扑球（Net Kill）':{k:['网口高举扑压，手腕点压发力','落地求短，一拍终结'],e:'拖臂抡杀，出界或触网'}
 },
 pb:{
@@ -907,18 +1013,18 @@ pb:{
 },
 tn:{
 '月亮球（Moonball）':{k:['借力高弧上旋，落点求深','用来调节奏、争取回位'],e:'弧高落浅，送对手进场攻'},
-'上旋过渡（Rally Topspin）':{k:['转体带动由低向高摩擦','过网高一二尺，控深求稳'],e:'只求狠失深度，落浅挨攻'},
-'上旋强抽（Topspin Drive）':{k:['蹬地转髋鞭打，由低向高猛烈摩擦','落点深弹跳高，压制对手'],e:'发力不转体，球飞出底线'},
+'上旋过渡（Rally Topspin）':{k:['转体带动由低向高摩擦','过网高一二尺，控深求稳'],e:'只求狠失深度，落浅挨攻',g:'半西方握拍为主，拍轨天然由低到高'},
+'上旋强抽（Topspin Drive）':{k:['蹬地转髋鞭打，由低向高猛烈摩擦','落点深弹跳高，压制对手'],e:'发力不转体，球飞出底线',g:'半西/西方握拍加摩擦，拍面天然关'},
 '挑高球（Lob）':{k:['由下向上充分摩擦','高弧越网前人头顶，落深'],e:'挑浅了，等于送高压'},
-'挡截（Block Volley）':{k:['拍面稳如墙，借力挡回','落点瞄深，随截随进'],e:'挥拍加力，截击失稳'},
-'反弹球（Half-Volley）':{k:['球刚弹起贴地挡起','重心低，拍面稳'],e:'等球弹高再打，错过高度窗口'},
-'接发（Return）':{k:['引拍短，转体分流','借发球之力回深'],e:'大引拍抢发力，接发全是失误'},
+'挡截（Block Volley）':{k:['拍面稳如墙，借力挡回','落点瞄深，随截随进'],e:'挥拍加力，截击失稳',g:'大陆式握拍，网前不换握'},
+'反弹球（Half-Volley）':{k:['球刚弹起贴地挡起','重心低，拍面稳'],e:'等球弹高再打，错过高度窗口',g:'大陆式握拍，低位稳定为先'},
+'接发（Return）':{k:['引拍短，转体分流','借发球之力回深'],e:'大引拍抢发力，接发全是失误',g:'正手东方式/半西，反手双手或单手'},
 '平击相持（Flat Rally）':{k:['快场平击，击球点在前','线路压深，抢上升期'],e:'击球点偏后，平击下网'},
 '平击强抽（Flat Drive）':{k:['高点平抽直线，速度压制','随挥完整，指向明确'],e:'强抽不带随挥，控不住界'},
 '抽击截击（Swing Volley）':{k:['空中由低向高挥抽','上旋压球入界，凌空进攻'],e:'平抽式硬打，出底线'},
-'放小球（Drop Shot）':{k:['伪装成抽击，触球瞬间卸力下切','短坠回头，随即上步封网'],e:'站位太深还放，放死自己'},
+'放小球（Drop Shot）':{k:['伪装成抽击，触球瞬间卸力下切','短坠回头，随即上步封网'],e:'站位太深还放，放死自己',g:'大陆式握拍，与切球同握'},
 '短挡截击（Drop Volley）':{k:['网前截击卸力，轻放坠入空当','放完还原，防挑高'],e:'站死网前只放不打，被看穿'},
-'切球（Slice）':{k:['高点向侧下切击，球低滑过网','防守转过渡，节奏突变'],e:'切球过高，送对手进攻位'},
+'切球（Slice）':{k:['高点向侧下切击，球低滑过网','防守转过渡，节奏突变'],e:'切球过高，送对手进攻位',g:'大陆式握拍，切放截全家共此一握'},
 '高压球（Overhead）':{k:['侧身举拍指球，鞭打下压','落点斜角，随压随进网'],e:'等球落到头顶才打，高压变捡球'}
 }
 };
