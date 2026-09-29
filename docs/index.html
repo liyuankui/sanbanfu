@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>三板斧 · 乒乓 × 羽毛球 × 匹克球 技术力学矩阵</title>
+<meta name="description" content="三张图打尽三大拍类运动全部技术：出球方向 × 发力强度，每技各归其位。乒乓 23 技、羽毛球 14 技、匹克球 12 技，附三档上手难度。">
+<style>
+  :root{
+    --ink:#221e18;
+    --paper:#f7f3ea;
+    --hair:#ddd5c4;
+    --muted:#7a7263;
+    --x1:#2e5f8b;
+    --x2:#a8722a;
+    --x3:#bf3a26;
+    --tint1:rgba(46,95,139,.055);
+    --tint2:rgba(168,114,42,.055);
+    --tint3:rgba(191,58,38,.055);
+    --serif:"Songti SC","STSong","Noto Serif SC","Source Han Serif SC",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#ece7db;font-family:var(--sans);color:var(--ink);}
+
+  /* ---------- brand bar ---------- */
+  .brand{width:min(1360px,96vw);margin:0 auto;padding:30px 0 0;}
+  .brand-in{display:flex;justify-content:space-between;align-items:flex-end;
+            flex-wrap:wrap;gap:14px;padding-bottom:20px;}
+  .brand h1{font-family:var(--serif);font-weight:900;font-size:34px;
+            letter-spacing:.1em;line-height:1.2;}
+  .brand h1 em{font-style:normal;color:var(--x3);}
+  .brand .tag{font-size:14px;color:var(--muted);margin-top:8px;letter-spacing:.04em;}
+  .tabs{display:flex;gap:8px;}
+  .tab{font-family:inherit;font-size:15px;font-weight:650;letter-spacing:.08em;
+       padding:10px 22px;border-radius:999px;border:1px solid var(--hair);
+       background:transparent;color:var(--muted);cursor:pointer;}
+  .tab.on{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+
+  /* ---------- poster ---------- */
+  .wrap{width:min(1360px,96vw);margin:0 auto 34px;}
+  .poster{background:var(--paper);padding:56px 72px 44px;
+          box-shadow:0 2px 24px rgba(0,0,0,.08);}
+  .kicker{font-size:13px;letter-spacing:.42em;color:var(--muted);
+          font-weight:600;margin-bottom:14px;}
+  .poster h2{font-family:var(--serif);font-weight:900;font-size:44px;
+     letter-spacing:.08em;line-height:1.15;}
+  .poster h2 em{font-style:normal;color:var(--x3);}
+  .sub{margin-top:14px;font-size:15.5px;color:var(--muted);line-height:1.8;}
+  .sub b{color:var(--ink);font-weight:650;}
+  .phead{padding-bottom:32px;border-bottom:1px solid var(--hair);}
+
+  .matrix{display:grid;
+          grid-template-columns:132px repeat(3,1fr);
+          gap:10px;margin-top:28px;}
+  .corner{display:flex;align-items:flex-end;justify-content:flex-start;
+          padding:0 8px 8px 0;}
+  .corner small{font-size:12.5px;color:var(--muted);line-height:1.7;
+          letter-spacing:.06em;}
+  .corner b{color:var(--ink);font-weight:650;}
+
+  .chead{padding:14px 18px 12px;border-top:3px solid;}
+  .chead .no{font-family:var(--serif);font-weight:900;font-size:15px;
+             letter-spacing:.14em;display:block;}
+  .chead .nm{font-size:19px;font-weight:700;letter-spacing:.05em;
+             display:block;margin:5px 0 3px;}
+  .chead .ds{font-size:12.5px;color:var(--muted);letter-spacing:.03em;}
+  .chead.c1{border-color:var(--x1);} .chead.c1 .no{color:var(--x1);}
+  .chead.c2{border-color:var(--x2);} .chead.c2 .no{color:var(--x2);}
+  .chead.c3{border-color:var(--x3);} .chead.c3 .no{color:var(--x3);}
+
+  .rhead{padding:8px 14px 8px 0;display:flex;flex-direction:column;
+         justify-content:center;border-right:1px solid var(--hair);}
+  .rhead .dir{font-family:var(--serif);font-size:34px;font-weight:900;
+              line-height:1;margin-bottom:10px;}
+  .rhead .nm{font-size:16.5px;font-weight:700;letter-spacing:.06em;}
+  .rhead .ds{font-size:12px;color:var(--muted);margin-top:6px;
+              line-height:1.65;letter-spacing:.02em;}
+  .ra .dir{color:var(--x3);}
+  .rb .dir{color:#5a6b58;}
+  .rc .dir{color:var(--x1);}
+  .spin .ra .dir{color:var(--x1);}
+  .spin .rc .dir{color:var(--x3);}
+
+  .cell{border-radius:6px;padding:22px 22px 20px;
+        display:flex;flex-wrap:wrap;gap:22px 30px;align-content:flex-start;}
+  .cell.k1{background:var(--tint1);} .cell.k2{background:var(--tint2);}
+  .cell.k3{background:var(--tint3);}
+
+  .tech{display:flex;align-items:flex-start;gap:12px;max-width:100%;}
+  .glyph{font-family:var(--serif);font-weight:900;font-size:46px;
+         line-height:1;min-width:50px;text-align:center;flex-shrink:0;
+         padding-top:2px;}
+  .glyph.duo{font-size:30px;min-width:96px;padding-top:11px;letter-spacing:.04em;}
+  .cell.k1 .glyph{color:var(--x1);} .cell.k2 .glyph{color:var(--x2);}
+  .cell.k3 .glyph{color:var(--x3);}
+  .meta{padding-top:3px;}
+  .meta .nm{font-size:15.5px;font-weight:700;letter-spacing:.04em;
+            display:flex;align-items:center;}
+  .meta .ds{font-size:12.8px;color:var(--muted);margin-top:5px;
+            line-height:1.6;max-width:190px;}
+
+  .dots{display:inline-flex;gap:3.5px;margin-left:9px;flex-shrink:0;}
+  .dots i{width:5px;height:5px;border-radius:50%;background:#d6cebd;}
+  .dots i.f{background:#6b6355;}
+
+  .pfoot{margin-top:34px;border-top:1px solid var(--hair);
+         padding-top:22px;display:flex;justify-content:space-between;
+         align-items:flex-end;gap:40px;}
+  .insight{font-size:13.5px;color:var(--muted);line-height:1.9;max-width:880px;}
+  .insight b{color:var(--ink);font-weight:650;}
+  .insight .seal{font-family:var(--serif);color:var(--x1);font-weight:900;}
+  .meta-r{font-size:12px;color:var(--muted);letter-spacing:.1em;
+          white-space:nowrap;text-align:right;line-height:1.8;}
+  .meta-r .lg{display:inline-flex;align-items:center;gap:4px;
+              letter-spacing:.05em;margin-bottom:6px;}
+
+  /* ---------- actions ---------- */
+  .actions{display:flex;gap:10px;margin:16px 0 0;flex-wrap:wrap;}
+  .act{font-family:inherit;font-size:13.5px;font-weight:600;letter-spacing:.05em;
+       padding:9px 18px;border-radius:8px;border:1px solid var(--hair);
+       background:var(--paper);color:var(--ink);cursor:pointer;
+       text-decoration:none;display:inline-block;}
+  .act:hover{border-color:var(--ink);}
+  .site-foot{width:min(1360px,96vw);margin:0 auto;padding:0 0 44px;
+             font-size:12.5px;color:var(--muted);letter-spacing:.04em;
+             display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .site-foot a{color:var(--muted);}
+</style>
+</head>
+<body>
+
+<div class="brand">
+  <div class="brand-in">
+    <div>
+      <h1>三板斧 <em>SanBanFu</em></h1>
+      <div class="tag">三张图打尽三大拍类运动：出球方向 × 发力强度，每技各归其位 · 附三档上手难度</div>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-t="pp">乒乓</button>
+      <button class="tab" data-t="bd">羽毛球</button>
+      <button class="tab" data-t="pb">匹克球</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 乒乓 ============ -->
+<div class="wrap" id="pp">
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">PING-PONG · 触球技术全景</div>
+    <h2>乒乓技术 <em>力学矩阵</em></h2>
+    <p class="sub">任何一板触球，皆可由两维定位：<b>做功方向（旋向）× 发力强度（做功轴向）</b>。三向三力，九格廿三技，各归其位。</p>
+  </div>
+  <div class="matrix spin">
+    <div class="corner"><small><b>发力强度 →</b><br>做功方向 ↓</small></div>
+    <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 纯借力</span><span class="ds">短促 · 吸力</span></div>
+    <div class="chead c2"><span class="no">X2</span><span class="nm">技巧控制</span><span class="ds">借力 + 微调摩擦</span></div>
+    <div class="chead c3"><span class="no">X3</span><span class="nm">主动爆发发力</span><span class="ds">强撞击 + 强摩擦</span></div>
+    <div class="rhead ra"><div class="dir">↑</div><div class="nm">向上发力</div><div class="ds">造上旋<br>应对下旋 / 对拉</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">贴</div><div class="meta"><div class="nm">贴（快带）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">化解前冲，顺势带回</div></div></div>
+      <div class="tech"><div class="glyph">撕</div><div class="meta"><div class="nm">撕<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">反手快撕，借力中加摩擦</div></div></div>
+      <div class="tech"><div class="glyph duo">放高球</div><div class="meta"><div class="nm">放高球<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">退台高弧线防守，耗其冲力</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">提</div><div class="meta"><div class="nm">提<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">台内轻摩擦，把下旋「拎」起来</div></div></div>
+      <div class="tech"><div class="glyph">拧</div><div class="meta"><div class="nm">拧（拧拉）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">台内侧向裹摩，抢拉下旋</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">拉</div><div class="meta"><div class="nm">拉 · 弧圈球<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">全身发力，极限摩擦（前冲 / 高吊）</div></div></div>
+    </div>
+    <div class="rhead rb"><div class="dir">→</div><div class="nm">向前 / 侧向</div><div class="ds">平击 · 化解 · 变线</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">碰</div><div class="meta"><div class="nm">碰<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">被动救球</div></div></div>
+      <div class="tech"><div class="glyph">挡</div><div class="meta"><div class="nm">挡<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">借力防守</div></div></div>
+      <div class="tech"><div class="glyph">抹</div><div class="meta"><div class="nm">抹<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">侧向卸力</div></div></div>
+      <div class="tech"><div class="glyph">挤</div><div class="meta"><div class="nm">挤<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">侧前推压变线</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">挑</div><div class="meta"><div class="nm">挑（挑打）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">台内抢攻平击</div></div></div>
+      <div class="tech"><div class="glyph">拨</div><div class="meta"><div class="nm">拨（快拨）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">反手借力，微调摩擦</div></div></div>
+      <div class="tech"><div class="glyph duo">滑板</div><div class="meta"><div class="nm">滑板<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">假动作侧向变线攻</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">击</div><div class="meta"><div class="nm">击（快攻）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">正手近台快打 · 突击</div></div></div>
+      <div class="tech"><div class="glyph">弹</div><div class="meta"><div class="nm">弹（弹击）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">反手爆发撞击</div></div></div>
+      <div class="tech"><div class="glyph duo">扣杀</div><div class="meta"><div class="nm">扣杀<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">正手大力平击，杀高球</div></div></div>
+    </div>
+    <div class="rhead rc"><div class="dir">↓</div><div class="nm">向下发力</div><div class="ds">造下旋<br>应对上旋 / 下旋</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">摆</div><div class="meta"><div class="nm">摆（摆短）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">极速减力，台内急坠</div></div></div>
+      <div class="tech"><div class="glyph">磕</div><div class="meta"><div class="nm">磕<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">向下抵消上旋</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">搓</div><div class="meta"><div class="nm">搓<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">基础下旋</div></div></div>
+      <div class="tech"><div class="glyph">切</div><div class="meta"><div class="nm">切<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">侧下旋防守</div></div></div>
+      <div class="tech"><div class="glyph">撇</div><div class="meta"><div class="nm">撇<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">侧拐下旋</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">劈</div><div class="meta"><div class="nm">劈（劈长）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">台内快速向下砍击</div></div></div>
+      <div class="tech"><div class="glyph">削</div><div class="meta"><div class="nm">削<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">远台重力下砍</div></div></div>
+    </div>
+  </div>
+  <div class="pfoot">
+    <p class="insight">一列之内亦有乾坤：借力一族（X1）力度不变，方向即换其名——向上为 <span class="seal">贴</span>，平动为 <span class="seal">挡</span>，向下为 <span class="seal">磕</span>。矩阵右移是加力，上移是加旋：先定位，再出手。长胶之拱、刮与发球、步法，不在本坐标系内。</p>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+  </div>
+</div>
+<div class="actions">
+  <a class="act" href="png/pingpong.png" download data-dl="pingpong">⬇ 下载长图</a>
+  <button class="act" data-share="pp">⧉ 复制分享文案</button>
+</div>
+</div>
+
+<!-- ============ 羽毛球 ============ -->
+<div class="wrap" id="bd" hidden>
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">BADMINTON · 触球技术全景</div>
+    <h2>羽毛球技术 <em>力学矩阵</em></h2>
+    <p class="sub">任何一板出球，皆可由两维定位：<b>出球弧线（上挑高弧 / 平射 / 下压）× 发力强度（减力软放 / 弧线控制 / 全力爆发）</b>。羽球无胶皮咬球，劈切搓摩不造回跳之旋，只为弧线与欺骗——故纵轴取弧线，横轴取力度。九格十四技，各归其位。</p>
+  </div>
+  <div class="matrix">
+    <div class="corner"><small><b>发力强度 →</b><br>出球弧线 ↓</small></div>
+    <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 软放</span><span class="ds">软挡 · 轻触</span></div>
+    <div class="chead c2"><span class="no">X2</span><span class="nm">弧线控制</span><span class="ds">借力 + 劈切搓摩</span></div>
+    <div class="chead c3"><span class="no">X3</span><span class="nm">全力爆发</span><span class="ds">鞭打击发</span></div>
+    <div class="rhead ra"><div class="dir">↑</div><div class="nm">上挑 · 高弧</div><div class="ds">防守过渡<br>换取时间</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">挡</div><div class="meta"><div class="nm">挡网（Block）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">接杀软挡，弧短过网即落</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">挑</div><div class="meta"><div class="nm">挑球（Lift）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">下手挑起，弧高换时间</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">高</div><div class="meta"><div class="nm">高远球（Clear）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">全力上挑至底线（高远 / 平高）</div></div></div>
+    </div>
+    <div class="rhead rb"><div class="dir">→</div><div class="nm">平射 · 快挡</div><div class="ds">相持对抗<br>争夺主动</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">平</div><div class="meta"><div class="nm">平挡（Dead Block）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">借力平顶，卸力回快</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">抽</div><div class="meta"><div class="nm">平抽（Drive）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">中场平抽快挡</div></div></div>
+      <div class="tech"><div class="glyph">推</div><div class="meta"><div class="nm">平推（Push）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">网口平推，压向两底</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">反</div><div class="meta"><div class="nm">反抽（Counter）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">接杀借力平抽，平弧反击</div></div></div>
+    </div>
+    <div class="rhead rc"><div class="dir">↓</div><div class="nm">下压 · 坠网</div><div class="ds">进攻终结<br>后场与网前</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">吊</div><div class="meta"><div class="nm">轻吊（Soft Drop）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">减力下压，球贴网坠</div></div></div>
+      <div class="tech"><div class="glyph">放</div><div class="meta"><div class="nm">放网（Net Shot）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">网前轻放，滚网即落</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">劈</div><div class="meta"><div class="nm">劈吊（Slice Drop）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">劈切裹球，弧线飘坠</div></div></div>
+      <div class="tech"><div class="glyph">搓</div><div class="meta"><div class="nm">搓球（Spin Net）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">搓摩翻滚，贴网急坠</div></div></div>
+      <div class="tech"><div class="glyph">勾</div><div class="meta"><div class="nm">勾对角（Cross Net）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">拍面斜抹，斜走变线</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">杀</div><div class="meta"><div class="nm">杀球（Smash）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">全身鞭杀（重杀 / 点杀 / 劈杀）</div></div></div>
+      <div class="tech"><div class="glyph">扑</div><div class="meta"><div class="nm">扑球（Net Kill）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">网口高举，扑压终结</div></div></div>
+    </div>
+  </div>
+  <div class="pfoot">
+    <p class="insight">上手位三力一门：同在头顶最高点——减力下压为 <span class="seal">吊</span>，全力下压为 <span class="seal">杀</span>，全力上挑为 <span class="seal">高远</span>。下手位物理定数：球低于网，唯挑高一条活路。发球与步法，不在本坐标系内。</p>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+  </div>
+</div>
+<div class="actions">
+  <a class="act" href="png/badminton.png" download data-dl="badminton">⬇ 下载长图</a>
+  <button class="act" data-share="bd">⧉ 复制分享文案</button>
+</div>
+</div>
+
+<!-- ============ 匹克球 ============ -->
+<div class="wrap" id="pb" hidden>
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">PICKLEBALL · 触球技术全景</div>
+    <h2>匹克球技术 <em>力学矩阵</em></h2>
+    <p class="sub">任何一板出球，皆可由两维定位：<b>出球弧线（上挑高弧 / 平射 / 下压）× 发力强度（减力借力 / 技巧控制 / 主动爆发）</b>。厨房禁拦网与两跳规则，逼出整片左上重置区。九格十二技，各归其位。</p>
+  </div>
+  <div class="matrix">
+    <div class="corner"><small><b>发力强度 →</b><br>出球弧线 ↓</small></div>
+    <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 纯借力</span><span class="ds">软手 · 吸力</span></div>
+    <div class="chead c2"><span class="no">X2</span><span class="nm">技巧控制</span><span class="ds">借力 + 弧线旋转微调</span></div>
+    <div class="chead c3"><span class="no">X3</span><span class="nm">主动爆发</span><span class="ds">强平射 · 强下压</span></div>
+    <div class="rhead ra"><div class="dir">↑</div><div class="nm">上挑 · 高弧</div><div class="ds">重置过渡<br>换取进网时间</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">挡</div><div class="meta"><div class="nm">软挡 · 重置（Reset）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">借力软挡，落点不可攻</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">软</div><div class="meta"><div class="nm">软战（Dink）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">厨房软战，软弧入区</div></div></div>
+      <div class="tech"><div class="glyph">放</div><div class="meta"><div class="nm">第三拍放（Drop）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">过网即坠，换进网权</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">挑</div><div class="meta"><div class="nm">挑高球（Lob）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">高弧越顶，落深后场</div></div></div>
+    </div>
+    <div class="rhead rb"><div class="dir">→</div><div class="nm">平射 · 对轰</div><div class="ds">相持对打<br>速度争夺</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">半</div><div class="meta"><div class="nm">半截击（Half-Volley）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">弹起瞬间借力挡起</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">顶</div><div class="meta"><div class="nm">快顶截击（Punch Volley）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">短促平顶，借力加力</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">射</div><div class="meta"><div class="nm">平射（Drive）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">平射底线（含第三拍 drive）</div></div></div>
+      <div class="tech"><div class="glyph">加</div><div class="meta"><div class="nm">加速（Speed Up）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">软战中突然加速平压</div></div></div>
+      <div class="tech"><div class="glyph">绕</div><div class="meta"><div class="nm">绕柱（ATP）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">走柱外平射，角度终结</div></div></div>
+    </div>
+    <div class="rhead rc"><div class="dir">↓</div><div class="nm">下压 · 终结</div><div class="ds">高球必杀<br>收分</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">轻</div><div class="meta"><div class="nm">轻截放（Drop Volley）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">截击轻放，坠入厨房</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">卷</div><div class="meta"><div class="nm">卷拉截击（Roll Volley）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">裹摩上旋，过网即沉</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">扣</div><div class="meta"><div class="nm">头顶扣杀（Overhead）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">高球大力下压终结</div></div></div>
+    </div>
+  </div>
+  <div class="pfoot">
+    <p class="insight">胜负律全在击球高度：球低只能住进左上<span class="seal">重置区</span>（软挡 · dink · drop），球高方可入住右下<span class="seal">终结区</span>（加速 · 扣杀）——第三拍 drop 正是从右下赎回左上的门票。厨房禁拦，故 dink / drop / lob 皆规则所生；发球与走位不入此图。</p>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+  </div>
+</div>
+<div class="actions">
+  <a class="act" href="png/pickleball.png" download data-dl="pickleball">⬇ 下载长图</a>
+  <button class="act" data-share="pb">⧉ 复制分享文案</button>
+</div>
+</div>
+
+<div class="site-foot">
+  <span>三板斧 SanBanFu · 乒乓 × 羽毛球 × 匹克球 技术力学矩阵</span>
+  <span><a href="https://liyuankui.github.io/">Kyle Li</a> · <a href="https://github.com/liyuankui/sanbanfu">GitHub</a> · MIT</span>
+</div>
+
+<script>
+// ── tabs ──────────────────────────────────────────────
+const SHARE = {
+  pp: '三板斧｜一张图打尽乒乓球 23 个技术：方向 × 力度 × 难度，每技归位 https://liyuankui.github.io/sanbanfu/',
+  bd: '三板斧｜一张图打尽羽毛球 14 个技术：弧线 × 力度 × 难度，杀吊高远同出一门 https://liyuankui.github.io/sanbanfu/',
+  pb: '三板斧｜一张图打尽匹克球 12 个技术：弧线 × 力度 × 难度，球低重置球高终结 https://liyuankui.github.io/sanbanfu/'
+};
+document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
+  ['pp','bd','pb'].forEach(id => document.getElementById(id).hidden = (id !== t.dataset.t));
+  track('tab_switch', { to: t.dataset.t });
+  window.scrollTo({ top: 0 });
+}));
+document.querySelectorAll('[data-dl]').forEach(a => a.addEventListener('click', () => track('png_download', { file: a.dataset.dl })));
+document.querySelectorAll('[data-share]').forEach(b => b.addEventListener('click', async () => {
+  try { await navigator.clipboard.writeText(SHARE[b.dataset.share]); b.textContent = '✓ 已复制'; setTimeout(() => b.textContent = '⧉ 复制分享文案', 1600); track('share_copy', { tab: b.dataset.share }); } catch (e) {}
+}));
+
+// ── PostHog Telemetry ─────────────────────────────────
+const POSTHOG_KEY = 'phc_AbKVVXPDZKThtUacCHhFOITuBczUvLmPStN1JAZs93e';
+const POSTHOG_ENDPOINT = 'https://eu.i.posthog.com/capture/';
+const PROJECT = 'sanbanfu';
+const UID_KEY = PROJECT + '-uid';
+
+function track(event, props = {}) {
+    if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') return;
+    try {
+        navigator.sendBeacon(POSTHOG_ENDPOINT, JSON.stringify({
+            api_key: POSTHOG_KEY,
+            event,
+            timestamp: new Date().toISOString(),
+            properties: {
+                distinct_id: localStorage.getItem(UID_KEY) || 'unknown',
+                project: PROJECT,
+                url: location.pathname,
+                page: 'index',
+                ...props
+            }
+        }));
+    } catch (e) {}
+}
+
+if (!localStorage.getItem(UID_KEY)) {
+    localStorage.setItem(UID_KEY, crypto.randomUUID().slice(0, 8));
+}
+track('page_view');
+</script>
+</body>
+</html>
