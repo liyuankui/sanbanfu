@@ -79,8 +79,8 @@
   .ra .dir{color:var(--x3);}
   .rb .dir{color:#5a6b58;}
   .rc .dir{color:var(--x1);}
-  .spin .ra .dir{color:var(--x1);}
-  .spin .rc .dir{color:var(--x3);}
+  .arc .ra .dir{color:var(--x1);}
+  .arc .rc .dir{color:var(--x3);}
 
   .cell{border-radius:6px;padding:22px 22px 20px;
         display:flex;flex-wrap:wrap;gap:22px 30px;align-content:flex-start;}
@@ -134,12 +134,13 @@
   <div class="brand-in">
     <div>
       <h1>三板斧 <em>SanBanFu</em></h1>
-      <div class="tag">三张图打尽三大拍类运动：出球方向 × 发力强度，每技各归其位 · 附三档上手难度</div>
+      <div class="tag">乒乓 × 羽毛球 × 匹克球 × 网球：出球方向 × 发力强度，每技各归其位 · 附三档上手难度</div>
     </div>
     <div class="tabs">
       <button class="tab on" data-t="pp">乒乓</button>
       <button class="tab" data-t="bd">羽毛球</button>
       <button class="tab" data-t="pb">匹克球</button>
+      <button class="tab" data-t="tn">网球</button>
     </div>
   </div>
 </div>
@@ -152,7 +153,7 @@
     <h2>乒乓技术 <em>力学矩阵</em></h2>
     <p class="sub">任何一板触球，皆可由两维定位：<b>做功方向（旋向）× 发力强度（做功轴向）</b>。三向三力，九格廿三技，各归其位。</p>
   </div>
-  <div class="matrix spin">
+  <div class="matrix">
     <div class="corner"><small><b>发力强度 →</b><br>做功方向 ↓</small></div>
     <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 纯借力</span><span class="ds">短促 · 吸力</span></div>
     <div class="chead c2"><span class="no">X2</span><span class="nm">技巧控制</span><span class="ds">借力 + 微调摩擦</span></div>
@@ -221,7 +222,7 @@
     <h2>羽毛球技术 <em>力学矩阵</em></h2>
     <p class="sub">任何一板出球，皆可由两维定位：<b>出球弧线（上挑高弧 / 平射 / 下压）× 发力强度（减力软放 / 弧线控制 / 全力爆发）</b>。羽球无胶皮咬球，劈切搓摩不造回跳之旋，只为弧线与欺骗——故纵轴取弧线，横轴取力度。九格十四技，各归其位。</p>
   </div>
-  <div class="matrix">
+  <div class="matrix arc">
     <div class="corner"><small><b>发力强度 →</b><br>出球弧线 ↓</small></div>
     <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 软放</span><span class="ds">软挡 · 轻触</span></div>
     <div class="chead c2"><span class="no">X2</span><span class="nm">弧线控制</span><span class="ds">借力 + 劈切搓摩</span></div>
@@ -281,7 +282,7 @@
     <h2>匹克球技术 <em>力学矩阵</em></h2>
     <p class="sub">任何一板出球，皆可由两维定位：<b>出球弧线（上挑高弧 / 平射 / 下压）× 发力强度（减力借力 / 技巧控制 / 主动爆发）</b>。厨房禁拦网与两跳规则，逼出整片左上重置区。九格十二技，各归其位。</p>
   </div>
-  <div class="matrix">
+  <div class="matrix arc">
     <div class="corner"><small><b>发力强度 →</b><br>出球弧线 ↓</small></div>
     <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 纯借力</span><span class="ds">软手 · 吸力</span></div>
     <div class="chead c2"><span class="no">X2</span><span class="nm">技巧控制</span><span class="ds">借力 + 弧线旋转微调</span></div>
@@ -331,8 +332,68 @@
 </div>
 </div>
 
+<!-- ============ 网球 ============ -->
+<div class="wrap" id="tn" hidden>
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">TENNIS · 触球技术全景</div>
+    <h2>网球技术 <em>力学矩阵</em></h2>
+    <p class="sub">任何一板触球，皆可由两维定位：<b>做功方向（造上旋 / 平击 / 造下旋）× 发力强度（减力借力 / 技巧控制 / 主动爆发）</b>。网球线床咬球如胶皮，旋转可主动制造——轴与乒乓同构，羽毛球、匹克球是其变奏。九格十四技，各归其位。</p>
+  </div>
+  <div class="matrix">
+    <div class="corner"><small><b>发力强度 →</b><br>做功方向 ↓</small></div>
+    <div class="chead c1"><span class="no">X1</span><span class="nm">减力 · 纯借力</span><span class="ds">借力挡 · 吸能</span></div>
+    <div class="chead c2"><span class="no">X2</span><span class="nm">技巧控制</span><span class="ds">借力 + 弧线旋转微调</span></div>
+    <div class="chead c3"><span class="no">X3</span><span class="nm">主动爆发</span><span class="ds">强平击 + 强摩擦</span></div>
+    <div class="rhead ra"><div class="dir">↑</div><div class="nm">向上 · 造上旋</div><div class="ds">高弧过网<br>相持与进攻</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">月</div><div class="meta"><div class="nm">月亮球（Moonball）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">借力高弧，防守调节奏</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">旋</div><div class="meta"><div class="nm">上旋过渡（Rally Topspin）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">正反手上旋相持，控弧控深</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">抽</div><div class="meta"><div class="nm">上旋强抽（Topspin Drive）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">大发力上旋进攻 · inside-out</div></div></div>
+      <div class="tech"><div class="glyph">挑</div><div class="meta"><div class="nm">挑高球（Lob）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">上旋越顶，攻防两用</div></div></div>
+    </div>
+    <div class="rhead rb"><div class="dir">→</div><div class="nm">平击 · 平动</div><div class="ds">直线快行<br>相持与变线</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">挡</div><div class="meta"><div class="nm">挡截（Block Volley）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">网前纯借力挡</div></div></div>
+      <div class="tech"><div class="glyph">弹</div><div class="meta"><div class="nm">反弹球（Half-Volley）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">弹起瞬间挡起</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">接</div><div class="meta"><div class="nm">接发（Return）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">短引拍借力，回深压制</div></div></div>
+      <div class="tech"><div class="glyph">平</div><div class="meta"><div class="nm">平击相持（Flat Rally）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">快场平击对拉</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">射</div><div class="meta"><div class="nm">平击强抽（Flat Drive）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">平射线路压制</div></div></div>
+      <div class="tech"><div class="glyph">挥</div><div class="meta"><div class="nm">抽击截击（Swing Volley）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">空中挥抽，上旋压下</div></div></div>
+    </div>
+    <div class="rhead rc"><div class="dir">↓</div><div class="nm">向下 · 造下旋</div><div class="ds">下压与短坠<br>网前与防守</div></div>
+    <div class="cell k1">
+      <div class="tech"><div class="glyph">放</div><div class="meta"><div class="nm">放小球（Drop Shot）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">减力下旋，短坠回头</div></div></div>
+      <div class="tech"><div class="glyph">短</div><div class="meta"><div class="nm">短挡截击（Drop Volley）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">网前轻放，坠入前场</div></div></div>
+    </div>
+    <div class="cell k2">
+      <div class="tech"><div class="glyph">切</div><div class="meta"><div class="nm">切球（Slice）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">下旋防守过渡，含侧切变线</div></div></div>
+    </div>
+    <div class="cell k3">
+      <div class="tech"><div class="glyph">压</div><div class="meta"><div class="nm">高压球（Overhead）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">头顶大力下压终结</div></div></div>
+    </div>
+  </div>
+  <div class="pfoot">
+    <p class="insight">借力一族方向定名，与乒乓 <span class="seal">贴 / 挡 / 磕</span> 同构——向上为 <span class="seal">月亮</span>，平动为 <span class="seal">挡截</span>，向下为 <span class="seal">放小</span>；力度不变，方向即换其名。上旋一行自左而右只是加力：月亮 → 过渡 → 强抽。发球与步法，不在本坐标系内。</p>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+  </div>
+</div>
+<div class="actions">
+  <a class="act" href="png/tennis.png" download data-dl="tennis">⬇ 下载长图</a>
+  <button class="act" data-share="tn">⧉ 复制分享文案</button>
+</div>
+</div>
+
 <div class="site-foot">
-  <span>三板斧 SanBanFu · 乒乓 × 羽毛球 × 匹克球 技术力学矩阵</span>
+  <span>三板斧 SanBanFu · 乒乓 × 羽毛球 × 匹克球 × 网球 · 第四板算插班</span>
   <span><a href="https://liyuankui.github.io/">Kyle Li</a> · <a href="https://github.com/liyuankui/sanbanfu">GitHub</a> · MIT</span>
 </div>
 
@@ -341,11 +402,12 @@
 const SHARE = {
   pp: '三板斧｜一张图打尽乒乓球 23 个技术：方向 × 力度 × 难度，每技归位 https://liyuankui.github.io/sanbanfu/',
   bd: '三板斧｜一张图打尽羽毛球 14 个技术：弧线 × 力度 × 难度，杀吊高远同出一门 https://liyuankui.github.io/sanbanfu/',
-  pb: '三板斧｜一张图打尽匹克球 12 个技术：弧线 × 力度 × 难度，球低重置球高终结 https://liyuankui.github.io/sanbanfu/'
+  pb: '三板斧｜一张图打尽匹克球 12 个技术：弧线 × 力度 × 难度，球低重置球高终结 https://liyuankui.github.io/sanbanfu/',
+  tn: '三板斧｜一张图打尽网球 14 个技术：旋转 × 力度 × 难度，轴同乒乓 https://liyuankui.github.io/sanbanfu/'
 };
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
   document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
-  ['pp','bd','pb'].forEach(id => document.getElementById(id).hidden = (id !== t.dataset.t));
+  ['pp','bd','pb','tn'].forEach(id => document.getElementById(id).hidden = (id !== t.dataset.t));
   track('tab_switch', { to: t.dataset.t });
   window.scrollTo({ top: 0 });
 }));
