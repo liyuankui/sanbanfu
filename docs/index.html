@@ -795,6 +795,7 @@ const SPORT_NAMES = {pp:'乒乓', bd:'羽毛球', pb:'匹克球', tn:'网球'}; 
 function show(id){
   document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x.dataset.t === id));
   IDS.forEach(i => document.getElementById(i).hidden = (i !== id));
+  document.getElementById('tModal').classList.remove('open');
   const dl = document.getElementById('stickyDl');
   if (PNG[id]) { dl.style.display = ''; dl.href = 'png/' + PNG[id] + '.png'; }
   else { dl.style.display = 'none'; }
