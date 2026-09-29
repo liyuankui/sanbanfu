@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{width:1200px;height:630px;background:#f7f3ea;font-family:"PingFang SC","Hiragino Sans GB",sans-serif;
+       color:#221e18;display:flex;align-items:center;padding:0 70px;}
+  .l{flex:1;}
+  .kicker{font-size:15px;letter-spacing:.42em;color:#7a7263;font-weight:600;margin-bottom:20px;}
+  h1{font-family:"Songti SC","STSong",serif;font-weight:900;font-size:96px;letter-spacing:.1em;line-height:1.1;}
+  h1 em{font-style:normal;color:#bf3a26;}
+  .tag{font-size:23px;color:#4a443a;margin-top:22px;line-height:1.65;font-weight:500;}
+  .tag b{color:#221e18;font-weight:700;}
+  .axes{margin-top:30px;font-size:17px;color:#7a7263;letter-spacing:.04em;}
+  .mini{width:330px;height:330px;display:grid;grid-template-columns:1fr 1fr 1fr;
+        grid-template-rows:78px 1fr 1fr 1fr;gap:8px;}
+  .mh{border-top:4px solid;font-radius:2px;display:flex;align-items:flex-start;
+      justify-content:center;padding-top:10px;font-size:15px;font-weight:700;letter-spacing:.1em;}
+  .mh span{font-size:12px;font-weight:600;margin-left:6px;}
+  .m1{border-color:#2e5f8b;color:#2e5f8b;} .m2{border-color:#a8722a;color:#a8722a;}
+  .m3{border-color:#bf3a26;color:#bf3a26;}
+  .mc{border-radius:6px;position:relative;}
+  .mc .g{position:absolute;top:16px;left:0;right:0;text-align:center;
+         font-family:"Songti SC",serif;font-weight:900;font-size:30px;line-height:1.35;}
+  .c11{background:rgba(46,95,139,.10);} .c11 .g{color:#2e5f8b;}
+  .c12{background:rgba(168,114,42,.10);} .c12 .g{color:#a8722a;}
+  .c13{background:rgba(191,58,38,.10);} .c13 .g{color:#bf3a26;}
+  .c21{background:rgba(46,95,139,.06);} .c21 .g{color:#2e5f8b;}
+  .c22{background:rgba(168,114,42,.06);} .c22 .g{color:#a8722a;}
+  .c23{background:rgba(191,58,38,.06);} .c23 .g{color:#bf3a26;}
+  .c31{background:rgba(46,95,139,.03);} .c31 .g{color:#2e5f8b;}
+  .c32{background:rgba(168,114,42,.03);} .c32 .g{color:#a8722a;}
+  .c33{background:rgba(191,58,38,.03);} .c33 .g{color:#bf3a26;}
+</style>
+</head>
+<body>
+  <div class="l">
+    <div class="kicker">PING-PONG · BADMINTON · PICKLEBALL · TENNIS</div>
+    <h1>三板斧<em>·</em>拍类矩阵</h1>
+    <div class="tag">四张图打尽 <b>乒乓 · 羽毛球 · 匹克球 · 网球</b><br>63 个技术，各归其位</div>
+    <div class="axes">出球方向 × 发力强度 × 上手难度</div>
+  </div>
+  <div class="mini">
+    <div></div><div class="mh m1">借力</div><div class="mh m2">控制</div><div class="mh m3">爆发</div>
+    <div class="mh m3" style="writing-mode:vertical-rl;border-top:none;align-items:center;padding:14px 0 0;letter-spacing:.3em;">向上</div>
+    <div class="mc c11"><div class="g">贴<br>挡</div></div>
+    <div class="mc c12"><div class="g">提<br>挑</div></div>
+    <div class="mc c13"><div class="g">拉</div></div>
+    <div class="mh m2" style="border-top:none;align-items:center;padding:0;letter-spacing:.3em;">平动</div>
+    <div class="mc c21"><div class="g">碰 挡<br>抹 挤</div></div>
+    <div class="mc c22"><div class="g">拨<br>滑板</div></div>
+    <div class="mc c23"><div class="g">击 弹<br>扣杀</div></div>
+    <div class="mh m1" style="writing-mode:vertical-rl;border-top:none;align-items:center;padding:14px 0 0;letter-spacing:.3em;">向下</div>
+    <div class="mc c31"><div class="g">摆 磕</div></div>
+    <div class="mc c32"><div class="g">搓 切<br>撇</div></div>
+    <div class="mc c33"><div class="g">劈 削</div></div>
+  </div>
+</body>
+</html>

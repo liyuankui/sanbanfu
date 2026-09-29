@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>三板斧 · 乒乓 × 羽毛球 × 匹克球 技术力学矩阵</title>
 <meta name="description" content="三张图打尽三大拍类运动全部技术：出球方向 × 发力强度，每技各归其位。乒乓 23 技、羽毛球 14 技、匹克球 12 技，附三档上手难度。">
+<meta property="og:title" content="三板斧 · 乒乓×羽毛球×匹克球×网球 技术力学矩阵">
+<meta property="og:description" content="出球方向 × 发力强度，每技各归其位 · 附难度定档、选板决策与技术地图自测">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://liyuankui.github.io/sanbanfu/">
+<meta property="og:image" content="https://liyuankui.github.io/sanbanfu/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="三板斧 · 拍类技术力学矩阵">
+<meta name="twitter:description" content="四张图打尽乒乓·羽毛球·匹克球·网球：方向 × 力度 × 难度">
+<meta name="twitter:image" content="https://liyuankui.github.io/sanbanfu/og-cover.png">
 <style>
   :root{
     --ink:#221e18;
@@ -126,6 +135,129 @@
              font-size:12.5px;color:var(--muted);letter-spacing:.04em;
              display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
   .site-foot a{color:var(--muted);}
+
+  /* ---------- 佯标（欺骗变线） ---------- */
+  .fake{font-size:10px;color:#fff;background:var(--x2);border-radius:3px;
+        padding:1.5px 4px;margin-left:7px;font-weight:600;letter-spacing:.05em;
+        flex-shrink:0;}
+
+  /* ---------- pb 英文轴注 ---------- */
+  .en-axes{display:block;margin-top:6px;font-size:12px;font-style:italic;
+           color:var(--muted);letter-spacing:.02em;}
+
+  /* ---------- 悬浮下载 ---------- */
+  #stickyDl{position:fixed;right:18px;bottom:18px;z-index:9;
+            font-size:13.5px;font-weight:650;letter-spacing:.05em;
+            padding:11px 18px;border-radius:999px;text-decoration:none;
+            background:var(--ink);color:var(--paper);box-shadow:0 4px 14px rgba(0,0,0,.22);}
+
+  /* ---------- 选板决策视图 ---------- */
+  .bands{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+  .band{display:grid;grid-template-columns:86px 1fr;gap:18px;align-items:center;
+        border:1px solid var(--hair);border-radius:8px;padding:18px 22px;background:#fbf8f1;}
+  .band .arr{font-family:var(--serif);font-weight:900;font-size:40px;text-align:center;line-height:1;}
+  .band .arr small{display:block;font-family:var(--sans);font-size:11px;font-weight:600;
+                   color:var(--muted);letter-spacing:.12em;margin-top:6px;}
+  .band.b-hi .arr{color:var(--x3);} .band.b-mid .arr{color:#5a6b58;}
+  .band.b-lo .arr{color:var(--x1);}
+  .band h3{font-size:17px;font-weight:750;letter-spacing:.05em;}
+  .band p{font-size:13px;color:var(--muted);margin-top:5px;line-height:1.75;}
+  .band .ex{margin-top:9px;display:flex;flex-wrap:wrap;gap:6px;}
+  .band .ex span{font-size:12px;color:var(--ink);background:var(--paper);
+                 border:1px solid var(--hair);border-radius:999px;padding:3px 10px;}
+  .timing{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .tcard{border:1px solid var(--hair);border-radius:8px;padding:16px 18px;background:#fbf8f1;}
+  .tcard h4{font-size:14.5px;font-weight:750;letter-spacing:.06em;}
+  .tcard h4 b{font-family:var(--serif);}
+  .tcard p{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.7;}
+  .laws{margin-top:22px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  .law{font-size:13px;color:var(--ink);background:#fbf8f1;border:1px solid var(--hair);
+       border-radius:8px;padding:12px 16px;line-height:1.7;}
+  .law b{font-weight:750;}
+
+  /* ---------- 技术地图自测 ---------- */
+  .map-sports{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
+  .msp{font-family:inherit;font-size:14px;font-weight:650;letter-spacing:.06em;
+       padding:8px 18px;border-radius:999px;border:1px solid var(--hair);
+       background:transparent;color:var(--muted);cursor:pointer;}
+  .msp.on{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+  .map-sum{margin-top:20px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+           border:1px solid var(--hair);border-radius:10px;padding:18px 22px;background:#fbf8f1;}
+  .map-sum .pct{font-family:var(--serif);font-weight:900;font-size:44px;line-height:1;}
+  .map-sum .pct small{font-size:16px;font-weight:700;}
+  .map-sum .mid{flex:1;min-width:220px;}
+  .map-sum .mid .sub2{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .bar{height:8px;border-radius:999px;background:#e7e0d2;overflow:hidden;margin-top:8px;}
+  .bar i{display:block;height:100%;background:var(--x2);border-radius:999px;
+         transition:width .25s;}
+  .cols3{margin-top:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .colbar{font-size:12px;color:var(--muted);}
+  .colbar .cl{display:flex;justify-content:space-between;margin-bottom:4px;}
+  .colbar .cl b{color:var(--ink);}
+  .mgroups{margin-top:22px;display:flex;flex-direction:column;gap:14px;}
+  .mg-row{border:1px solid var(--hair);border-radius:10px;padding:14px 18px;background:#fbf8f1;}
+  .mg-row h4{font-size:14px;font-weight:750;letter-spacing:.05em;color:var(--ink);
+             display:flex;align-items:center;gap:8px;}
+  .mg-row h4 .pct-s{font-size:11.5px;color:var(--muted);font-weight:600;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .mchip{font-family:inherit;font-size:13px;font-weight:600;letter-spacing:.02em;
+         padding:7px 13px;border-radius:8px;border:1px solid var(--hair);
+         background:var(--paper);color:var(--ink);cursor:pointer;
+         display:inline-flex;align-items:center;gap:6px;}
+  .mchip .d{display:inline-flex;gap:2.5px;}
+  .mchip .d i{width:4px;height:4px;border-radius:50%;background:#d6cebd;}
+  .mchip .d i.f{background:#a09880;}
+  .mchip.on{background:var(--ink);border-color:var(--ink);color:var(--paper);}
+  .mchip.on .d i{background:rgba(247,243,234,.35);}
+  .mchip.on .d i.f{background:var(--paper);}
+  .map-note{margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.03em;}
+
+  /* ---------- 手机端 ---------- */
+  @media (max-width:760px){
+    body{padding:0;}
+    .brand,.wrap,.site-foot{width:100%;}
+    .brand{padding:18px 14px 0;}
+    .brand-in{padding-bottom:12px;}
+    .brand h1{font-size:26px;}
+    .brand .tag{font-size:12.5px;}
+    .tabs{width:100%;flex-wrap:wrap;}
+    .tab{font-size:13.5px;padding:8px 15px;}
+    .wrap{margin-bottom:22px;}
+    .poster{padding:24px 14px 20px;box-shadow:none;border-radius:0;}
+    .kicker{letter-spacing:.24em;font-size:11px;margin-bottom:8px;}
+    .poster h2{font-size:28px;}
+    .sub{font-size:13.5px;margin-top:10px;}
+    .phead{padding-bottom:20px;}
+    .corner,.chead{display:none;}
+    .matrix{grid-template-columns:1fr;gap:8px;margin-top:16px;}
+    .rhead{flex-direction:row;align-items:center;gap:12px;border-right:0;
+           border-bottom:2px solid var(--hair);padding:10px 2px;}
+    .rhead .dir{margin:0;font-size:26px;}
+    .rhead .nm{font-size:14.5px;}
+    .rhead .ds{margin-top:0;font-size:11px;}
+    .cell{padding:14px 14px 14px;gap:16px;}
+    .cell::before{content:"X1 · 借力";display:block;font-size:10.5px;font-weight:650;
+                  color:var(--muted);letter-spacing:.14em;margin-bottom:10px;width:100%;}
+    .cell.k2::before{content:"X2 · 控制";}
+    .cell.k3::before{content:"X3 · 爆发";}
+    .glyph{font-size:32px;min-width:36px;}
+    .glyph.duo{font-size:22px;min-width:66px;padding-top:7px;}
+    .meta .nm{font-size:13px;flex-wrap:wrap;}
+    .meta .ds{font-size:11.5px;max-width:150px;}
+    .dots{margin-left:6px;gap:2.5px;}
+    .dots i{width:4px;height:4px;}
+    .pfoot{flex-direction:column;align-items:flex-start;gap:14px;margin-top:24px;}
+    .insight{font-size:12.5px;}
+    .meta-r{text-align:left;white-space:normal;}
+    .actions{margin:12px 0 0;}
+    .site-foot{flex-direction:column;padding:0 14px 90px;}
+    .timing,.laws,.cols3{grid-template-columns:1fr;}
+    .band{grid-template-columns:64px 1fr;padding:14px;}
+    .band .arr{font-size:30px;}
+    .map-sum{gap:14px;}
+    .map-sum .pct{font-size:36px;}
+    #stickyDl{right:12px;bottom:12px;font-size:12.5px;padding:10px 15px;}
+  }
 </style>
 </head>
 <body>
@@ -141,6 +273,8 @@
       <button class="tab" data-t="bd">羽毛球</button>
       <button class="tab" data-t="pb">匹克球</button>
       <button class="tab" data-t="tn">网球</button>
+      <button class="tab" data-t="how">怎么选</button>
+      <button class="tab" data-t="map">自测</button>
     </div>
   </div>
 </div>
@@ -181,7 +315,7 @@
     <div class="cell k2">
       <div class="tech"><div class="glyph">挑</div><div class="meta"><div class="nm">挑（挑打）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">台内抢攻平击</div></div></div>
       <div class="tech"><div class="glyph">拨</div><div class="meta"><div class="nm">拨（快拨）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">反手借力，微调摩擦</div></div></div>
-      <div class="tech"><div class="glyph duo">滑板</div><div class="meta"><div class="nm">滑板<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">假动作侧向变线攻</div></div></div>
+      <div class="tech"><div class="glyph duo">滑板</div><div class="meta"><div class="nm">滑板<span class="fake">佯</span><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">假动作侧向变线攻</div></div></div>
     </div>
     <div class="cell k3">
       <div class="tech"><div class="glyph">击</div><div class="meta"><div class="nm">击（快攻）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">正手近台快打 · 突击</div></div></div>
@@ -205,7 +339,7 @@
   </div>
   <div class="pfoot">
     <p class="insight">一列之内亦有乾坤：借力一族（X1）力度不变，方向即换其名——向上为 <span class="seal">贴</span>，平动为 <span class="seal">挡</span>，向下为 <span class="seal">磕</span>。矩阵右移是加力，上移是加旋：先定位，再出手。长胶之拱、刮与发球、步法，不在本坐标系内。</p>
-    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难 · 定档：教练共识</span><br>三板斧 · 2026</div>
   </div>
 </div>
 <div class="actions">
@@ -254,9 +388,9 @@
       <div class="tech"><div class="glyph">放</div><div class="meta"><div class="nm">放网（Net Shot）<span class="dots"><i class="f"></i><i></i><i></i></span></div><div class="ds">网前轻放，滚网即落</div></div></div>
     </div>
     <div class="cell k2">
-      <div class="tech"><div class="glyph">劈</div><div class="meta"><div class="nm">劈吊（Slice Drop）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">劈切裹球，弧线飘坠</div></div></div>
+      <div class="tech"><div class="glyph">劈</div><div class="meta"><div class="nm">劈吊（Slice Drop）<span class="fake">佯</span><span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">劈切裹球，弧线飘坠</div></div></div>
       <div class="tech"><div class="glyph">搓</div><div class="meta"><div class="nm">搓球（Spin Net）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">搓摩翻滚，贴网急坠</div></div></div>
-      <div class="tech"><div class="glyph">勾</div><div class="meta"><div class="nm">勾对角（Cross Net）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">拍面斜抹，斜走变线</div></div></div>
+      <div class="tech"><div class="glyph">勾</div><div class="meta"><div class="nm">勾对角（Cross Net）<span class="fake">佯</span><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">拍面斜抹，斜走变线</div></div></div>
     </div>
     <div class="cell k3">
       <div class="tech"><div class="glyph">杀</div><div class="meta"><div class="nm">杀球（Smash）<span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span></div><div class="ds">全身鞭杀（重杀 / 点杀 / 劈杀）</div></div></div>
@@ -265,7 +399,7 @@
   </div>
   <div class="pfoot">
     <p class="insight">上手位三力一门：同在头顶最高点——减力下压为 <span class="seal">吊</span>，全力下压为 <span class="seal">杀</span>，全力上挑为 <span class="seal">高远</span>。下手位物理定数：球低于网，唯挑高一条活路。发球与步法，不在本坐标系内。</p>
-    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难 · 定档：教练共识</span><br>三板斧 · 2026</div>
   </div>
 </div>
 <div class="actions">
@@ -280,7 +414,7 @@
   <div class="phead">
     <div class="kicker">PICKLEBALL · 触球技术全景</div>
     <h2>匹克球技术 <em>力学矩阵</em></h2>
-    <p class="sub">任何一板出球，皆可由两维定位：<b>出球弧线（上挑高弧 / 平射 / 下压）× 发力强度（减力借力 / 技巧控制 / 主动爆发）</b>。厨房禁拦网与两跳规则，逼出整片左上重置区。九格十二技，各归其位。</p>
+    <p class="sub">任何一板出球，皆可由两维定位：<b>出球弧线（上挑高弧 / 平射 / 下压）× 发力强度（减力借力 / 技巧控制 / 主动爆发）</b>。厨房禁拦网与两跳规则，逼出整片左上重置区。九格十二技，各归其位。<span class="en-axes">Axes: arc (lift · drive · press-down) × effort (absorb · control · explode)</span></p>
   </div>
   <div class="matrix arc">
     <div class="corner"><small><b>发力强度 →</b><br>出球弧线 ↓</small></div>
@@ -323,7 +457,7 @@
   </div>
   <div class="pfoot">
     <p class="insight">胜负律全在击球高度：球低只能住进左上<span class="seal">重置区</span>（软挡 · dink · drop），球高方可入住右下<span class="seal">终结区</span>（加速 · 扣杀）——第三拍 drop 正是从右下赎回左上的门票。厨房禁拦，故 dink / drop / lob 皆规则所生；发球与走位不入此图。</p>
-    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难 · 定档：教练共识</span><br>三板斧 · 2026</div>
   </div>
 </div>
 <div class="actions">
@@ -371,7 +505,7 @@
     </div>
     <div class="rhead rc"><div class="dir">↓</div><div class="nm">向下 · 造下旋</div><div class="ds">下压与短坠<br>网前与防守</div></div>
     <div class="cell k1">
-      <div class="tech"><div class="glyph">放</div><div class="meta"><div class="nm">放小球（Drop Shot）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">减力下旋，短坠回头</div></div></div>
+      <div class="tech"><div class="glyph">放</div><div class="meta"><div class="nm">放小球（Drop Shot）<span class="fake">佯</span><span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">减力下旋，短坠回头</div></div></div>
       <div class="tech"><div class="glyph">短</div><div class="meta"><div class="nm">短挡截击（Drop Volley）<span class="dots"><i class="f"></i><i class="f"></i><i></i></span></div><div class="ds">网前轻放，坠入前场</div></div></div>
     </div>
     <div class="cell k2">
@@ -383,7 +517,7 @@
   </div>
   <div class="pfoot">
     <p class="insight">借力一族方向定名，与乒乓 <span class="seal">贴 / 挡 / 磕</span> 同构——向上为 <span class="seal">月亮</span>，平动为 <span class="seal">挡截</span>，向下为 <span class="seal">放小</span>；力度不变，方向即换其名。上旋一行自左而右只是加力：月亮 → 过渡 → 强抽。发球与步法，不在本坐标系内。</p>
-    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难</span><br>三板斧 · 2026</div>
+    <div class="meta-r"><span class="lg"><span class="dots"><i class="f"></i><i class="f"></i><i class="f"></i></span> 上手难度：三档，易 → 难 · 定档：教练共识</span><br>三板斧 · 2026</div>
   </div>
 </div>
 <div class="actions">
@@ -391,6 +525,93 @@
   <button class="act" data-share="tn">⧉ 复制分享文案</button>
 </div>
 </div>
+
+<!-- ============ 怎么选 ============ -->
+<div class="wrap" id="how" hidden>
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">DECISION VIEW · 输入侧视角</div>
+    <h2>选板 <em>决策视角</em></h2>
+    <p class="sub">矩阵答「这板球是什么」，此页答「此时该打什么」——技术图谱是输出侧，选板是输入侧：<b>先读球高定行，再读时机定力，位置定远近</b>。</p>
+  </div>
+
+  <div class="bands">
+    <div class="band b-hi">
+      <div class="arr">↓<small>高于网 / 肩</small></div>
+      <div>
+        <h3>球高 —— 下压终结</h3>
+        <p>只有在此高度，下半区才对你开门：全力下压收分。错过高点，窗口即关。</p>
+        <div class="ex"><span>羽：杀球 / 扑球</span><span>匹：扣杀 / 加速</span><span>网：高压 / 空中挥抽</span><span>乒：扣杀 / 弹击</span></div>
+      </div>
+    </div>
+    <div class="band b-mid">
+      <div class="arr">→<small>平于网口</small></div>
+      <div>
+        <h3>球平 —— 平弧对轰</h3>
+        <p>速度与角度之争：在借力与加力之间抢节奏，输快半拍即失主动。</p>
+        <div class="ex"><span>羽：平抽 / 平推</span><span>匹：drive / speed up</span><span>网：平击相持 / 接发</span><span>乒：挑 / 弹击 / 挤</span></div>
+      </div>
+    </div>
+    <div class="band b-lo">
+      <div class="arr">↑<small>低于网</small></div>
+      <div>
+        <h3>球低 —— 只能向上</h3>
+        <p>下半区对你关门，上半区求生：重置、挑高、造旋再起。低球求稳不求狠。</p>
+        <div class="ex"><span>羽：挑球 / 高远</span><span>匹：reset / dink / drop</span><span>网：月亮球 / 挑高</span><span>乒：搓 / 提 / 拉加转</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timing">
+    <div class="tcard"><h4><b>上升期</b> · 借力</h4><p>迎前吸能，快过旋转——贴 / 挡 / 快带 / 半截击 / 反弹球</p></div>
+    <div class="tcard"><h4><b>高点期</b> · 发力</h4><p>力量窗口，一击定音——扣杀 / 扑 / 高压 / 弹击</p></div>
+    <div class="tcard"><h4><b>下降期</b> · 造旋</h4><p>以旋换稳，重新组织——拉加转 / 挑高球 / 高远 / 月亮球</p></div>
+  </div>
+
+  <div class="laws">
+    <div class="law"><b>乒乓</b>：台内抢先上手（摆 / 挑 / 拧），出台进入对拉；来球下旋先起旋，上旋才配发力。</div>
+    <div class="law"><b>羽毛球</b>：下手必挑高，上手必下压；杀吊同出一门，唯力不同。</div>
+    <div class="law"><b>匹克球</b>：球低重置，球高终结；第三拍 drop 是从底线赎回网前的门票。</div>
+    <div class="law"><b>网球</b>：低月亮高高压；中场抽挡过渡，底线相持等短球。</div>
+  </div>
+
+  <div class="pfoot">
+    <p class="insight">高度定行，时机定力，位置定远近——矩阵是地图，此页是导航。同一格内的高下，靠的是练，不是选。</p>
+    <div class="meta-r">选板 · 输入侧<br>三板斧 · 2026</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ 自测 ============ -->
+<div class="wrap" id="map" hidden>
+<div class="poster">
+  <div class="phead">
+    <div class="kicker">SELF-AUDIT · 技术地图</div>
+    <h2>技术地图 <em>自测</em></h2>
+    <p class="sub">勾选你已上手的技术，看你的版图覆盖几成——空格即盲区，<b>先补高频易学之格</b>。数据只存本机。</p>
+  </div>
+
+  <div class="map-sports" id="mapSports"></div>
+
+  <div class="map-sum">
+    <div class="pct"><span id="mPct">0</span><small>%</small></div>
+    <div class="mid">
+      <div><b id="mCount">0 / 0</b> 技已上手 · <span id="mNext">—</span></div>
+      <div class="bar"><i id="mBar" style="width:0%"></i></div>
+      <div class="sub2" id="mHint">从左上格开始：先立借力，再修摩擦。</div>
+    </div>
+    <button class="act" id="mShare">⧉ 复制版图战绩</button>
+    <button class="act" id="mReset">↺ 重置本项</button>
+  </div>
+
+  <div class="cols3" id="mCols"></div>
+  <div class="mgroups" id="mGroups"></div>
+
+  <div class="map-note">● 难度与矩阵同源 · 定档：教练共识 · 勾选状态存于浏览器本地，不上传。</div>
+</div>
+</div>
+
+<a id="stickyDl" href="png/pingpong.png" download>⬇ 本图长图</a>
 
 <div class="site-foot">
   <span>三板斧 SanBanFu · 乒乓 × 羽毛球 × 匹克球 × 网球 · 第四板算插班</span>
@@ -405,12 +626,30 @@ const SHARE = {
   pb: '三板斧｜一张图打尽匹克球 12 个技术：弧线 × 力度 × 难度，球低重置球高终结 https://liyuankui.github.io/sanbanfu/',
   tn: '三板斧｜一张图打尽网球 14 个技术：旋转 × 力度 × 难度，轴同乒乓 https://liyuankui.github.io/sanbanfu/'
 };
+// ── tabs + hash 直链 ──────────────────────────────────
+const IDS = ['pp','bd','pb','tn','how','map'];
+const PNG = {pp:'pingpong', bd:'badminton', pb:'pickleball', tn:'tennis'};
+const SPORT_NAMES = {pp:'乒乓', bd:'羽毛球', pb:'匹克球', tn:'网球'};
+function show(id){
+  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x.dataset.t === id));
+  IDS.forEach(i => document.getElementById(i).hidden = (i !== id));
+  const dl = document.getElementById('stickyDl');
+  if (PNG[id]) { dl.style.display = ''; dl.href = 'png/' + PNG[id] + '.png'; }
+  else { dl.style.display = 'none'; }
+}
 document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
-  document.querySelectorAll('.tab').forEach(x => x.classList.toggle('on', x === t));
-  ['pp','bd','pb','tn'].forEach(id => document.getElementById(id).hidden = (id !== t.dataset.t));
-  track('tab_switch', { to: t.dataset.t });
+  const id = t.dataset.t; show(id);
+  history.replaceState(null, '', '#' + id);
+  track('tab_switch', { to: id });
   window.scrollTo({ top: 0 });
 }));
+window.addEventListener('hashchange', () => {
+  const h = location.hash.slice(1); if (IDS.includes(h)) show(h);
+});
+document.getElementById('stickyDl').addEventListener('click', () => {
+  const cur = ['pp','bd','pb','tn'].find(i => !document.getElementById(i).hidden);
+  track('png_download', { file: PNG[cur] || 'pingpong' });
+});
 document.querySelectorAll('[data-dl]').forEach(a => a.addEventListener('click', () => track('png_download', { file: a.dataset.dl })));
 document.querySelectorAll('[data-share]').forEach(b => b.addEventListener('click', async () => {
   try { await navigator.clipboard.writeText(SHARE[b.dataset.share]); b.textContent = '✓ 已复制'; setTimeout(() => b.textContent = '⧉ 复制分享文案', 1600); track('share_copy', { tab: b.dataset.share }); } catch (e) {}
@@ -432,8 +671,9 @@ function track(event, props = {}) {
             properties: {
                 distinct_id: localStorage.getItem(UID_KEY) || 'unknown',
                 project: PROJECT,
-                url: location.pathname,
+                url: location.pathname + location.hash,
                 page: 'index',
+                ref: (document.referrer ? new URL(document.referrer).hostname : 'direct'),
                 ...props
             }
         }));
@@ -443,6 +683,118 @@ function track(event, props = {}) {
 if (!localStorage.getItem(UID_KEY)) {
     localStorage.setItem(UID_KEY, crypto.randomUUID().slice(0, 8));
 }
+// ── 技术地图自测 ──────────────────────────────────────
+const STORE_KEY = 'sanbanfu-map';
+let store = {};
+try { store = JSON.parse(localStorage.getItem(STORE_KEY) || '{}'); } catch (e) { store = {}; }
+let curSport = 'pp';
+
+function collect(sport){
+  const sec = document.getElementById(sport);
+  const rowLabels = [...sec.querySelectorAll('.rhead .nm')].map(e => e.textContent.trim());
+  const techs = [];
+  [...sec.querySelectorAll('.cell')].forEach((cell, ci) => {
+    const row = Math.floor(ci / 3), col = ci % 3 + 1;
+    [...cell.querySelectorAll('.tech')].forEach((t, i) => {
+      const nm = t.querySelector('.meta .nm');
+      const name = ((nm.firstChild && nm.firstChild.textContent) || '').trim();
+      const stars = nm.querySelectorAll('.dots i.f').length;
+      techs.push({ key: sport + '-' + ci + '-' + i, name, stars, row, col });
+    });
+  });
+  return { rowLabels, techs };
+}
+const DATA = {}; ['pp','bd','pb','tn'].forEach(s => DATA[s] = collect(s));
+
+function dotsHTML(n){
+  let s = ''; for (let i = 0; i < 3; i++) s += '<i' + (i < n ? ' class="f"' : '') + '></i>';
+  return '<span class="d">' + s + '</span>';
+}
+
+function renderSports(){
+  const box = document.getElementById('mapSports'); box.innerHTML = '';
+  Object.keys(SPORT_NAMES).forEach(s => {
+    const b = document.createElement('button');
+    b.className = 'msp' + (s === curSport ? ' on' : '');
+    b.textContent = SPORT_NAMES[s];
+    b.onclick = () => { curSport = s; renderSports(); renderMap(); track('map_sport', { to: s }); };
+    box.appendChild(b);
+  });
+}
+
+function renderMap(){
+  const { rowLabels, techs } = DATA[curSport];
+  const got = new Set(store[curSport] || []);
+  const m = techs.filter(t => got.has(t.key));
+  const pct = techs.length ? Math.round(m.length / techs.length * 100) : 0;
+  document.getElementById('mPct').textContent = pct;
+  document.getElementById('mCount').textContent = m.length + ' / ' + techs.length;
+  document.getElementById('mBar').style.width = pct + '%';
+  const next = techs.filter(t => !got.has(t.key)).sort((a,b) => a.stars - b.stars || a.col - b.col)[0];
+  document.getElementById('mNext').textContent = next ? ('下一手：' + next.name) : '已全图制霸';
+  document.getElementById('mHint').textContent =
+    pct === 0 ? '从左上格开始：先立借力，再修摩擦。'
+    : pct < 40 ? '版图尚窄——借力区（X1）是性价比最高的补格处。'
+    : pct < 75 ? '渐成气候——中列控制技决定你的上限。'
+    : '已近全图——右列爆发技与「佯」字变线是最后的分水岭。';
+
+  const cols = document.getElementById('mCols'); cols.innerHTML = '';
+  [['X1 · 借力',1],['X2 · 控制',2],['X3 · 爆发',3]].forEach(([nm,c]) => {
+    const tt = techs.filter(t => t.col === c), mm = tt.filter(t => got.has(t.key));
+    const p = tt.length ? Math.round(mm.length / tt.length * 100) : 0;
+    const d = document.createElement('div'); d.className = 'colbar';
+    d.innerHTML = '<div class="cl"><span>' + nm + '</span><b>' + mm.length + '/' + tt.length + '</b></div><div class="bar"><i style="width:' + p + '%"></i></div>';
+    cols.appendChild(d);
+  });
+
+  const groups = document.getElementById('mGroups'); groups.innerHTML = '';
+  rowLabels.forEach((rl, r) => {
+    const tt = techs.filter(t => t.row === r), mm = tt.filter(t => got.has(t.key));
+    const g = document.createElement('div'); g.className = 'mg-row';
+    const h = document.createElement('h4');
+    h.innerHTML = rl + ' <span class="pct-s">' + mm.length + '/' + tt.length + '</span>';
+    g.appendChild(h);
+    const c = document.createElement('div'); c.className = 'chips';
+    tt.forEach(t => {
+      const b = document.createElement('button');
+      b.className = 'mchip' + (got.has(t.key) ? ' on' : '');
+      b.innerHTML = t.name + dotsHTML(t.stars);
+      b.onclick = () => {
+        const arr = new Set(store[curSport] || []);
+        const on = !arr.has(t.key);
+        on ? arr.add(t.key) : arr.delete(t.key);
+        store[curSport] = [...arr];
+        localStorage.setItem(STORE_KEY, JSON.stringify(store));
+        track('map_toggle', { sport: curSport, name: t.name, on });
+        renderMap();
+      };
+      c.appendChild(b);
+    });
+    g.appendChild(c); groups.appendChild(g);
+  });
+}
+renderSports(); renderMap();
+
+document.getElementById('mShare').onclick = async () => {
+  const { techs } = DATA[curSport]; const got = new Set(store[curSport] || []);
+  const m = techs.filter(t => got.has(t.key)).length;
+  const pct = techs.length ? Math.round(m / techs.length * 100) : 0;
+  const txt = '三板斧自测｜我的' + SPORT_NAMES[curSport] + '技术版图 ' + pct + '%（' + m + '/' + techs.length + '）——空格即盲区 https://liyuankui.github.io/sanbanfu/#map';
+  try {
+    await navigator.clipboard.writeText(txt);
+    const b = document.getElementById('mShare'); b.textContent = '✓ 已复制';
+    setTimeout(() => b.textContent = '⧉ 复制版图战绩', 1600);
+    track('map_share', { sport: curSport, pct });
+  } catch (e) {}
+};
+document.getElementById('mReset').onclick = () => {
+  delete store[curSport];
+  localStorage.setItem(STORE_KEY, JSON.stringify(store));
+  renderMap(); track('map_reset', { sport: curSport });
+};
+
+// ── 初始视图（支持 #hash 直链） ────────────────────────
+show(IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'pp');
 track('page_view');
 </script>
 </body>
