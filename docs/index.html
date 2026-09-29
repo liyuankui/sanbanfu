@@ -212,6 +212,36 @@
   .mchip.on .d i.f{background:var(--paper);}
   .map-note{margin-top:14px;font-size:12px;color:var(--muted);letter-spacing:.03em;}
 
+  /* ---------- 点击展开 · 技术详情 ---------- */
+  .tech{cursor:pointer;}
+  .tech:hover .glyph{text-decoration:underline;text-decoration-thickness:3px;
+                     text-underline-offset:8px;}
+  .tmodal{position:fixed;inset:0;z-index:20;display:none;
+          align-items:center;justify-content:center;
+          background:rgba(34,30,24,.45);}
+  .tmodal.open{display:flex;}
+  .tcard{background:var(--paper);border-radius:14px;max-width:540px;width:92%;
+         padding:30px 34px 26px;box-shadow:0 18px 60px rgba(0,0,0,.3);
+         max-height:86vh;overflow-y:auto;position:relative;}
+  .tclose{position:absolute;top:14px;right:16px;font-size:22px;line-height:1;
+          background:none;border:none;color:var(--muted);cursor:pointer;padding:6px;}
+  .thead{display:flex;align-items:flex-start;gap:16px;padding-right:30px;}
+  .thead .glyph{font-size:52px;}
+  .thead .nm{font-size:19px;font-weight:750;letter-spacing:.03em;
+             display:flex;align-items:center;flex-wrap:wrap;}
+  .tpos{margin-top:8px;font-size:12px;color:var(--muted);letter-spacing:.08em;}
+  .tpos b{color:var(--ink);font-weight:650;}
+  .tbody{margin-top:20px;}
+  .tbody .lbl{font-size:12px;font-weight:750;letter-spacing:.28em;margin-bottom:8px;}
+  .tbody .k .lbl{color:var(--x2);}
+  .tbody .e .lbl{color:var(--x3);margin-top:18px;}
+  .tbody ul{list-style:none;}
+  .tbody li{font-size:14px;line-height:1.8;color:var(--ink);padding-left:16px;
+            position:relative;}
+  .tbody li::before{content:"·";position:absolute;left:2px;color:var(--muted);
+                    font-weight:900;}
+  .tbody .e li{color:#6d5a48;}
+
   /* ---------- 手机端 ---------- */
   @media (max-width:760px){
     body{padding:0;}
@@ -257,6 +287,10 @@
     .map-sum{gap:14px;}
     .map-sum .pct{font-size:36px;}
     #stickyDl{right:12px;bottom:12px;font-size:12.5px;padding:10px 15px;}
+    .tmodal{align-items:flex-end;}
+    .tcard{width:100%;max-width:100%;border-radius:16px 16px 0 0;
+           padding:24px 20px 30px;max-height:82vh;}
+    .thead .glyph{font-size:40px;}
   }
 </style>
 </head>
@@ -266,7 +300,7 @@
   <div class="brand-in">
     <div>
       <h1>三板斧 <em>SanBanFu</em></h1>
-      <div class="tag">乒乓 × 羽毛球 × 匹克球 × 网球：出球方向 × 发力强度，每技各归其位 · 附三档上手难度</div>
+      <div class="tag">乒乓 × 羽毛球 × 匹克球 × 网球：出球方向 × 发力强度，每技各归其位 · 附三档上手难度 · 点击任意技术看要领</div>
     </div>
     <div class="tabs">
       <button class="tab on" data-t="pp">乒乓</button>
@@ -611,6 +645,23 @@
 </div>
 </div>
 
+<div class="tmodal" id="tModal" role="dialog" aria-modal="true">
+  <div class="tcard">
+    <button class="tclose" id="tClose" aria-label="关闭">×</button>
+    <div class="thead">
+      <div class="glyph" id="tGlyph"></div>
+      <div>
+        <div class="nm" id="tNm"></div>
+        <div class="tpos" id="tPos"></div>
+      </div>
+    </div>
+    <div class="tbody">
+      <div class="k"><div class="lbl">要 领</div><ul id="tK"></ul></div>
+      <div class="e"><div class="lbl">易 错</div><ul id="tE"></ul></div>
+    </div>
+  </div>
+</div>
+
 <a id="stickyDl" href="png/pingpong.png" download>⬇ 本图长图</a>
 
 <div class="site-foot">
@@ -792,6 +843,116 @@ document.getElementById('mReset').onclick = () => {
   localStorage.setItem(STORE_KEY, JSON.stringify(store));
   renderMap(); track('map_reset', { sport: curSport });
 };
+
+// ── 点击技术 · 要领/易错 ──────────────────────────────
+const DETAILS = {
+pp:{
+'贴（快带）':{k:['借来球之力，上升期迎前轻带，拍面前倾控弧','手腕锁住靠步法到位，落点瞄空当'],e:'后撤发力硬带，越带越出界'},
+'撕':{k:['反手位上升期外摩擦，以肘为轴前臂发力','摩擦球中上部，借力中加速'],e:'撞多摩少，回球无弧线扎网'},
+'放高球':{k:['退台充分，由下向上摩擦制造高弧','落点求深，为回位争取时间'],e:'只托不摩，回球短而慢挨杀'},
+'提':{k:['台内上步插进，手腕由下向上轻摩球中部','把下旋「拎」起来，动作小而隐蔽'],e:'引拍过大，动作暴露且易磕拍'},
+'拧（拧拉）':{k:['肘部支起为轴，手腕内收后外展裹摩','摩擦为主撞击为辅，吃球侧中部'],e:'光动手腕无肘支撑，拧不出质量'},
+'拉 · 弧圈球':{k:['蹬转带动，大臂前臂快收，由下向上前方摩擦','先摩后撞，下降前期触球'],e:'只用手臂抡，弧线高而无冲'},
+'碰':{k:['拍形随球调整，顺势一碰以上台为先','重心护住台角，还原要快'],e:'发力硬顶，失误倍增'},
+'挡':{k:['拍面稍前倾，借力回挡不发力','落点瞄准对手空当与追身'],e:'拍形仰，回球高被冲'},
+'抹':{k:['顺势向侧下方轻抹，卸来球之力','触球瞬间变线，动作隐蔽'],e:'抹得太厚成推挡，线路暴露'},
+'挤':{k:['侧身位拍面向侧前压，推挤来球侧部','变线打回头，角度优先'],e:'时机偏晚，挤不出角度'},
+'挑（挑打）':{k:['上步插进台下，步法是前提','手腕爆发向前上方击打，摩打结合'],e:'站原地够球，挑完不还原'},
+'拨（快拨）':{k:['肘贴身，前臂外展横拨','借力加微摩，拍面前倾控弧'],e:'抬肘甩大臂，弧线失控'},
+'滑板':{k:['引拍作势攻直线，骗对手重心','触球瞬间拍面外撇送斜线'],e:'假动作过早暴露，骗己不骗人'},
+'击（快攻）':{k:['收前臂快打，上升期借力击球中上部','落点打活，连击压反手'],e:'大开大合等下降期，快攻不快'},
+'弹（弹击）':{k:['前臂手腕瞬间爆发前顶','击球高点期中上部，短促有力'],e:'引拍过大失时机，弹而不准'},
+'扣杀':{k:['高点期全身发力，向前下压打','步法先行到位，看准再杀'],e:'发力过猛失控制，出界多于得分'},
+'摆（摆短）':{k:['上步插台内，上升前期轻切球中下部','力短弧低落点短，两跳不出台'],e:'切得太厚变搓长，摆高送抢攻'},
+'磕':{k:['拍面稍仰略向下磕挡','抵消上旋冲力，回球低平'],e:'仰拍硬接，回球冒高'},
+'搓':{k:['拍面后仰，下降期摩擦球中下部','稳中求转，落点控反手大角'],e:'只碰不摩，回球不转挨攻'},
+'切':{k:['向侧下方切击，回球侧下旋','变线调动，节奏放慢'],e:'切球过薄，直接下网'},
+'撇':{k:['触球瞬间拍面侧撇','回球侧拐，落点刁钻'],e:'拧腰过度，撇出边线'},
+'劈（劈长）':{k:['上升期加力快切，又长又快','顶住对手反手，压制上手'],e:'劈得高而不长，送进攻机会'},
+'削':{k:['退台重心下降，由上向下前方摩擦','削得转且稳，落点拉开'],e:'站直了削，只有形没有转'}
+},
+bd:{
+'挡网（Block）':{k:['接杀时拍面随球缓冲卸力','放短落网前两角'],e:'拍面硬顶，回球又高又短挨扑'},
+'挑球（Lift）':{k:['下手位前臂带动手腕由下向上挑','弧高落深，换取回位时间'],e:'弧不高落不深，等于送杀'},
+'高远球（Clear）':{k:['侧身蹬转，大臂带前臂鞭打','击球点在头前上方最高点'],e:'击球点偏低偏后，高而不远'},
+'平挡（Dead Block）':{k:['借力平顶，拍面随来球调整','快而平过网，节奏突变'],e:'加力硬挡，直接出界'},
+'平抽（Drive）':{k:['握拍放松，前臂快挥','抽球于体侧前方，平而快'],e:'等球到身后才抽，被动挨打'},
+'平推（Push）':{k:['网口高点，前臂手指发力平推','压向对手两底角'],e:'推得过高挨扑，过平扎网'},
+'反抽（Counter）':{k:['接杀瞬间借力反抽','拍面控平弧打回头'],e:'引拍过大，错过反抽时机'},
+'轻吊（Soft Drop）':{k:['上手位减力切放，动作与杀球同形','球贴网坠落，落点求短'],e:'吊得过高过长，对手上网即扑'},
+'放网（Net Shot）':{k:['网前手指控拍轻放','球滚网而过，贴网而落'],e:'动作大发力猛，球弹高送扑'},
+'劈吊（Slice Drop）':{k:['拍面斜切球托侧部','弧线飘而坠，带欺骗性'],e:'切得过薄下网，过厚成轻吊'},
+'搓球（Spin Net）':{k:['拍面搓切球托底部使其翻滚','贴网急坠，对手难受'],e:'搓球托侧面，不翻滚反出界'},
+'勾对角（Cross Net）':{k:['拍面斜抹变线，手腕手指控角','对角贴网，攻其不备'],e:'手臂横扫，勾出边线'},
+'杀球（Smash）':{k:['侧身倒拍，腰腹鞭打下压','击球点前上方最高，压腕收拍'],e:'击球点偏后，杀球无力且易伤肩'},
+'扑球（Net Kill）':{k:['网口高举扑压，手腕点压发力','落地求短，一拍终结'],e:'拖臂抡杀，出界或触网'}
+},
+pb:{
+'软挡 · 重置（Reset）':{k:['软手吸力，拍面微仰','落点入厨房，回球不可攻'],e:'手硬回高，送对手扣杀'},
+'软战（Dink）':{k:['屈膝低位，由下向上推摩','软弧过网落厨房，耐心等错'],e:'站直弯腰够球，dink 变挑高'},
+'第三拍放（Drop）':{k:['底线起拍轻裹，摩擦过网','球过网即坠入厨房，为进网铺路'],e:'放得过高过长，对手抢攻'},
+'挑高球（Lob）':{k:['高弧越对手头顶，落深后场','偷袭须出其不意'],e:'挑得不够深，被高压终结'},
+'半截击（Half-Volley）':{k:['弹起瞬间贴地借力挡起','拍面稳定不挥动'],e:'抢着发力，弹飞失控'},
+'快顶截击（Punch Volley）':{k:['短促前顶，借力加力','前臂发力不过肩'],e:'大挥拍，出界或下网'},
+'平射（Drive）':{k:['由低到高平抽过网','压对手后场，落点求深'],e:'打得过高，被网前截杀'},
+'加速（Speed Up）':{k:['软战中突加速平压','瞄准对手身体与空当'],e:'时机不对强行加速，反送分'},
+'绕柱（ATP）':{k:['球出边线时绕柱外侧平射','角度即杀，意识先行'],e:'常规思维救球，错过 ATP 窗口'},
+'轻截放（Drop Volley）':{k:['截击瞬间卸力轻放','坠入厨房死区'],e:'截击发力过猛，球弹出易攻区'},
+'卷拉截击（Roll Volley）':{k:['裹摩上旋截击，由低向高挥拍','过网即沉入界内'],e:'平挡式硬碰，球飞出底线'},
+'头顶扣杀（Overhead）':{k:['侧身举拍，鞭打下压','落点斜入厨房角'],e:'直臂下压无手腕，杀出界'}
+},
+tn:{
+'月亮球（Moonball）':{k:['借力高弧上旋，落点求深','用来调节奏、争取回位'],e:'弧高落浅，送对手进场攻'},
+'上旋过渡（Rally Topspin）':{k:['转体带动由低向高摩擦','过网高一二尺，控深求稳'],e:'只求狠失深度，落浅挨攻'},
+'上旋强抽（Topspin Drive）':{k:['蹬地转髋鞭打，由低向高猛烈摩擦','落点深弹跳高，压制对手'],e:'发力不转体，球飞出底线'},
+'挑高球（Lob）':{k:['由下向上充分摩擦','高弧越网前人头顶，落深'],e:'挑浅了，等于送高压'},
+'挡截（Block Volley）':{k:['拍面稳如墙，借力挡回','落点瞄深，随截随进'],e:'挥拍加力，截击失稳'},
+'反弹球（Half-Volley）':{k:['球刚弹起贴地挡起','重心低，拍面稳'],e:'等球弹高再打，错过高度窗口'},
+'接发（Return）':{k:['引拍短，转体分流','借发球之力回深'],e:'大引拍抢发力，接发全是失误'},
+'平击相持（Flat Rally）':{k:['快场平击，击球点在前','线路压深，抢上升期'],e:'击球点偏后，平击下网'},
+'平击强抽（Flat Drive）':{k:['高点平抽直线，速度压制','随挥完整，指向明确'],e:'强抽不带随挥，控不住界'},
+'抽击截击（Swing Volley）':{k:['空中由低向高挥抽','上旋压球入界，凌空进攻'],e:'平抽式硬打，出底线'},
+'放小球（Drop Shot）':{k:['伪装成抽击，触球瞬间卸力下切','短坠回头，随即上步封网'],e:'站位太深还放，放死自己'},
+'短挡截击（Drop Volley）':{k:['网前截击卸力，轻放坠入空当','放完还原，防挑高'],e:'站死网前只放不打，被看穿'},
+'切球（Slice）':{k:['高点向侧下切击，球低滑过网','防守转过渡，节奏突变'],e:'切球过高，送对手进攻位'},
+'高压球（Overhead）':{k:['侧身举拍指球，鞭打下压','落点斜角，随压随进网'],e:'等球落到头顶才打，高压变捡球'}
+}
+};
+const tModal = document.getElementById('tModal');
+['pp','bd','pb','tn'].forEach(s => {
+  const sec = document.getElementById(s);
+  const colL = [...sec.querySelectorAll('.chead .nm')].map(e => e.textContent.trim());
+  const rowL = [...sec.querySelectorAll('.rhead .nm')].map(e => e.textContent.trim());
+  const cells = [...sec.querySelectorAll('.cell')];
+  sec.querySelectorAll('.tech').forEach(t => {
+    t.setAttribute('tabindex', '0'); t.setAttribute('role', 'button');
+    const open = () => {
+      const nm = t.querySelector('.meta .nm');
+      const name = ((nm.firstChild && nm.firstChild.textContent) || '').trim();
+      const d = (DETAILS[s] || {})[name]; if (!d) return;
+      const cell = t.closest('.cell'); const ci = cells.indexOf(cell);
+      const glyph = t.querySelector('.glyph');
+      const gm = document.getElementById('tGlyph');
+      gm.textContent = glyph.textContent;
+      gm.style.color = getComputedStyle(glyph).color;
+      const tNm = document.getElementById('tNm');
+      tNm.textContent = name;
+      const dots = nm.querySelector('.dots');
+      if (dots) tNm.appendChild(dots.cloneNode(true));
+      document.getElementById('tPos').innerHTML =
+        '坐标：<b>' + rowL[Math.floor(ci / 3)] + '</b> × <b>' + colL[ci % 3] + '</b>';
+      document.getElementById('tK').innerHTML = d.k.map(x => '<li>' + x + '</li>').join('');
+      document.getElementById('tE').innerHTML = '<li>' + d.e + '</li>';
+      tModal.classList.add('open');
+      track('tech_detail', { sport: s, name });
+    };
+    t.addEventListener('click', open);
+    t.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); open(); } });
+  });
+});
+document.getElementById('tClose').onclick = () => tModal.classList.remove('open');
+tModal.addEventListener('click', e => { if (e.target === tModal) tModal.classList.remove('open'); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') tModal.classList.remove('open'); });
 
 // ── 初始视图（支持 #hash 直链） ────────────────────────
 show(IDS.includes(location.hash.slice(1)) ? location.hash.slice(1) : 'pp');
