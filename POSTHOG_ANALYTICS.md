@@ -6,6 +6,7 @@
 | 事件 | 触发 | 属性 |
 |------|------|------|
 | `page_view` | 页面加载 | `page=index`，`ref`（来路域名，直达记 `direct`） |
+| `page_leave` | `dwell_ms`（累计可见毫秒）· `scroll_pct`（最大滚动 0-100） | 页面隐藏/关闭时上报——时长与首屏留存 |
 | `tab_switch` | 切换 tab | `to` ∈ {pp, bd, pb, tn, four, how, map} |
 | `png_download` | 下载长图（底部按钮或悬浮按钮） | `file` ∈ {pingpong, badminton, pickleball, tennis, four} |
 | `share_copy` | 复制图分享文案 | `tab` ∈ {pp, bd, pb, tn} |
